@@ -1,0 +1,36 @@
+{
+  "name": "wrap-text",
+  "version": "1.0.0",
+  "description": "A simple tool for wrapping words to the specified column width.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run lint && npm run test:unit",
+    "test:unit": "node test.js",
+    "test:unit:debug": "node --inspect-brk test.js",
+    "lint": "eslint --ignore-path .gitignore ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/storytouch/wrap-text.git"
+  },
+  "keywords": [
+    "wrap",
+    "words",
+    "text"
+  ],
+  "author": {
+    "name": "Guilherme Goncalves",
+    "email": "inacio.guilherme@gmail.com"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/storytouch/wrap-text/issues"
+  },
+  "homepage": "https://github.com/storytouch/wrap-text#readme",
+  "devDependencies": {
+    "eslint": "^7.3.1",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.21.2",
+    "testit": "^3.1.0"
+  }
+}
