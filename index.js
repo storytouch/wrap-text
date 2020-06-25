@@ -64,7 +64,8 @@ const wrapText = (text, width, options = {}) => {
     }
 
     // mark existing line breaks
-    if (inputLineIndex < inputLines.length - 1) {
+    offset += 1;
+    if (inputLineIndex < inputLines.length - 1) { // skip the end of text
       outputLines[outputLines.length - 1].originalBreak = true;
     }
   });

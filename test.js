@@ -78,6 +78,14 @@ test('wrapText()', () => {
       test('and the richOutput options is enabled', () => {
         options = { richOutput: true };
 
+        test('returns each line with its expected offset and length', () => {
+          const result = wrapText(text, width, options);
+          result.forEach((entry) => {
+            const textSubstr = text.substr(entry.offset, entry.length);
+            assert.deepEqual(textSubstr, entry.line);
+          });
+        });
+
         test('allows to reconstruct the original input', () => {
           const result = wrapText(text, width, options);
           const reconstructedText = result.reduce((acc, entry) => {
