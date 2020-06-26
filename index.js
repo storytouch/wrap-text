@@ -1,16 +1,28 @@
 const DEFAULT_OPTIONS = {
+  browser: 'chrome',
   richOutput: false,
 };
 
 const wrapText = (text, width, options = {}) => {
-  const mergedOptions = {
+  options = {
     ...DEFAULT_OPTIONS,
     ...options,
   };
 
+  // TODO implement the algorithms of other browsers
+  if (options.browser !== 'chrome') {
+    throw new Error('Browser not compatible yet');
+  }
+
+  // edge case
+  if (width < 1) width = 1;
+
   const outputLines = [];
   let offset = 0;
   let outputLine = '';
+
+  // split a word every $size characters.
+  const chunkWord = (str, size) => str.match(new RegExp(`.{1,${size}}`, 'g'));
 
   // adds a new output line
   const appendNewLine = (lineText) => {
@@ -24,16 +36,24 @@ const wrapText = (text, width, options = {}) => {
 
   // adds a word into the last output line
   const appendWord = (word) => {
-    if (word.length + outputLine.length > width) {
-      appendNewLine(outputLine);
-    }
+    // if a word is larger than the specified width
+    if (word.length > width) {
+      const subWords = chunkWord(word, width);
+      subWords.forEach((subWord) => appendWord(subWord));
+    } else {
+      if (word.length + outputLine.length > width) {
+        appendNewLine(outputLine);
+      }
 
-    outputLine += word;
-    offset += word.length;
+      outputLine += word;
+      offset += word.length;
+    }
   };
 
-  // split a word every $size characters.
-  const chunkWord = (str, size) => str.match(new RegExp(`.{1,${size}}`, 'g'));
+  const appendWhitespace = () => {
+    outputLine += ' ';
+    offset += 1;
+  };
 
   // preserves existing line breaks
   const inputLines = text.split('\n');
@@ -44,21 +64,15 @@ const wrapText = (text, width, options = {}) => {
     } else {
       const words = inputLine.split(' ');
       words.forEach((word, wordIndex) => {
-        const wordToAppend = wordIndex === words.length - 1
-          ? word
-          : `${word} `;
+        const isLastWord = wordIndex === words.length - 1;
 
-        // if a word is larger than the specified width
-        if (wordToAppend.length > width) {
-          const subWords = chunkWord(wordToAppend, width);
-          subWords.forEach((subWord) => appendWord(subWord));
-        } else {
-          appendWord(wordToAppend);
-        }
+        appendWord(word);
 
-        if (wordIndex === words.length - 1) {
+        if (isLastWord) {
           // if the word is the last one
           appendNewLine(outputLine);
+        } else {
+          appendWhitespace();
         }
       });
     }
@@ -70,7 +84,7 @@ const wrapText = (text, width, options = {}) => {
     }
   });
 
-  if (!mergedOptions.richOutput) {
+  if (!options.richOutput) {
     return outputLines.map((entry) => entry.line);
   }
 
