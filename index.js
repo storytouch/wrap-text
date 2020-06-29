@@ -59,8 +59,7 @@ const wrapText = (text, width, options = {}) => {
   const inputLines = text.split('\n');
   inputLines.forEach((inputLine, inputLineIndex) => {
     if (inputLine.length === 0) {
-      outputLines.push({ line: '', offset });
-      offset += 1;
+      appendNewLine('');
     } else {
       const words = inputLine.split(' ');
       words.forEach((word, wordIndex) => {

@@ -56,7 +56,7 @@ test('wrapText()', () => {
     });
 
     test('with a text with line breaks', () => {
-      text = 'Lorem\nipsum dolor sit amet,\nconsectetur adipiscing \nelit.';
+      text = 'Lorem\nipsum dolor sit amet,\nconsectetur adipiscing \n\nelit.';
 
       test('and width 15', () => {
         width = 15;
@@ -73,6 +73,7 @@ test('wrapText()', () => {
             'amet,',
             'consectetur ',
             'adipiscing ',
+            '',
             'elit.',
           ];
           const result = wrapText(text, width);
