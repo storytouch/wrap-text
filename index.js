@@ -1,29 +1,34 @@
-const ChromeTextWrapper = require('./lib/chromeTextWrapper');
+const { getAlgorithm } = require('./lib');
 
 const wrapText = (text, width, options = {}) => {
-  const defaultOptions = {
-    browser: 'chrome',
-    richOutput: false,
-  };
-
-  options = {
-    ...defaultOptions,
-    ...options,
-  };
+  // validates the input values
+  if (!text || !Number.isInteger(width)) {
+    throw new Error('Invalid arguments');
+  }
 
   // edge case
   if (width < 1) width = 1;
 
-  let textWrapperAlgorithm;
-  switch (options.browser) {
-    case 'chrome':
-      textWrapperAlgorithm = new ChromeTextWrapper(options);
-      break;
-    default:
-      throw new Error('Browser not compatible yet');
-  }
+  // merge options  with default values
+  const defaultOptions = {
+    browser: 'chrome',
+    algorithm: 'default',
+    richOutput: false,
+  };
 
-  return textWrapperAlgorithm.perform(text, width);
+  const mergedOptions = {
+    ...defaultOptions,
+    ...options,
+  };
+
+  // perform the choosen algorithm
+  const {
+    browser,
+    algorithm,
+  } = mergedOptions;
+
+  const algorithmInstance = getAlgorithm(browser, algorithm);
+  return algorithmInstance.perform(text, width, options);
 };
 
 module.exports = wrapText;
