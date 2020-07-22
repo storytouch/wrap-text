@@ -12,7 +12,7 @@ const wrapText = (text, width, options = {}) => {
   // merge options  with default values
   const defaultOptions = {
     browser: 'chrome',
-    algorithm: 'default',
+    algorithm: 'simple',
     richOutput: false,
   };
 

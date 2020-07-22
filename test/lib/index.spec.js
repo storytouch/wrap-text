@@ -3,7 +3,7 @@ const test = require('testit');
 
 const { getAlgorithm } = require('../../lib');
 
-const ChromeDefaultTextWrapper = require('../../lib/chromeDefaultTextWrapper');
+const ChromeSimpleTextWrapper = require('../../lib/chromeSimpleTextWrapper');
 
 let browser;
 let algorithm;
@@ -12,12 +12,12 @@ test('getAlgorithm()', () => {
   test('with CHROME BROWSER', () => {
     browser = 'chrome';
 
-    test('and DEFAULT algorithm', () => {
-      algorithm = 'default';
+    test('and SIMPLE algorithm', () => {
+      algorithm = 'simple';
 
-      test('returns an instance of ChromeDefaultTextWrapper', () => {
+      test('returns an instance of ChromeSimpleTextWrapper', () => {
         const result = getAlgorithm(browser, algorithm);
-        assert(result instanceof ChromeDefaultTextWrapper);
+        assert(result instanceof ChromeSimpleTextWrapper);
       });
     });
 
@@ -33,8 +33,8 @@ test('getAlgorithm()', () => {
   test('with an unsupported Browser', () => {
     browser = 'an_unsupported_browser';
 
-    test('and default algorithm', () => {
-      algorithm = 'default';
+    test('and SIMPLE algorithm', () => {
+      algorithm = 'simple';
 
       test('throws an error', () => {
         assert.throws(() => getAlgorithm(browser, algorithm));

@@ -1,17 +1,17 @@
 const assert = require('assert');
 const test = require('testit');
-const ChromeDefaultTextWrapper = require('../../lib/chromeDefaultTextWrapper');
+const ChromeSimpleTextWrapper = require('../../lib/chromeSimpleTextWrapper');
 
 let text;
 let width;
 let options;
 
 const subject = (...args) => {
-  const algorithm = new ChromeDefaultTextWrapper();
+  const algorithm = new ChromeSimpleTextWrapper();
   return algorithm.perform(...args);
 };
 
-test('ChromeDefaultTextWrapper', () => {
+test('ChromeSimpleTextWrapper', () => {
   // produce the same output of Chrome CSS break-word algorithm,
   // but does not trim lines
   test('with a text without line breaks', () => {
