@@ -1,0 +1,292 @@
+{
+  "documentLines": [
+    {
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi molestie, enim eu porttitor accumsan, risus elit posuere velit, vitae sodales est quam vel nisi.",
+      "type": "general"
+    },
+    {
+      "text": "",
+      "type": "general"
+    },
+    {
+      "text": "",
+      "type": "general"
+    },
+    {
+      "text": "Phasellus aliquet nec justo eget porta. Sed ac purus quis diam imperdiet condimentum. Donec euismod ultricies sem, sed consequat eros facilisis vel.",
+      "type": "heading"
+    },
+    {
+      "text": "",
+      "type": "general"
+    },
+    {
+      "text": "(Fusce id libero bibendum, sagittis eros id, blandit mi. Mauris dapibus iaculis nisl, at blandit lacus tincidunt sit amet.)",
+      "type": "parenthetical"
+    },
+    {
+      "text": "Nulla eget consequat turpis. Duis quis aliquet massa.",
+      "type": "character"
+    },
+    {
+      "text": "Vestibulum a arcu sed augue ultrices tempor nec sit amet felis.",
+      "type": "action"
+    },
+    {
+      "text": "",
+      "type": "general"
+    },
+    {
+      "text": "Integer libero elit, tristique nec eros non, sollicitudin ornare purus. Nam et hendrerit dui, vel iaculis sem.",
+      "type": "dialogue"
+    },
+    {
+      "text": "",
+      "type": "general"
+    },
+    {
+      "text": "Etiam sed velit a tellus commodo fringilla dapibus a sem. ",
+      "type": "transition"
+    },
+    {
+      "text": "Vivamus non imperdiet ipsum, non accumsan justo. Sed eget feugiat lectus. Aenean non egestas libero. Donec egestas urna mattis convallis maximus.",
+      "type": "shot"
+    }
+  ],
+  "widthPerType": {
+    "action": 61,
+    "character": 38,
+    "dialogue": 35,
+    "general": 61,
+    "heading": 61,
+    "parenthetical": 25,
+    "shot": 61,
+    "transition": 16
+  },
+  "expectedOutput": [
+    {
+      "line": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
+      "offset": 0,
+      "length": 57,
+      "type": "general",
+      "sourceLineIndex": 0
+    },
+    {
+      "line": "Morbi molestie, enim eu porttitor accumsan, risus elit ",
+      "offset": 57,
+      "length": 55,
+      "type": "general",
+      "sourceLineIndex": 0
+    },
+    {
+      "line": "posuere velit, vitae sodales est quam vel nisi.",
+      "offset": 112,
+      "length": 47,
+      "type": "general",
+      "sourceLineIndex": 0
+    },
+    {
+      "line": "",
+      "offset": 160,
+      "length": 0,
+      "type": "general",
+      "sourceLineIndex": 1
+    },
+    {
+      "line": "",
+      "offset": 161,
+      "length": 0,
+      "type": "general",
+      "sourceLineIndex": 2
+    },
+    {
+      "line": "Phasellus aliquet nec justo eget porta. Sed ac purus quis ",
+      "offset": 162,
+      "length": 58,
+      "type": "heading",
+      "sourceLineIndex": 3
+    },
+    {
+      "line": "diam imperdiet condimentum. Donec euismod ultricies sem, sed ",
+      "offset": 220,
+      "length": 61,
+      "type": "heading",
+      "sourceLineIndex": 3
+    },
+    {
+      "line": "consequat eros facilisis vel.",
+      "offset": 281,
+      "length": 29,
+      "type": "heading",
+      "sourceLineIndex": 3
+    },
+    {
+      "line": "",
+      "offset": 311,
+      "length": 0,
+      "type": "general",
+      "sourceLineIndex": 4
+    },
+    {
+      "line": "(Fusce id libero ",
+      "offset": 312,
+      "length": 17,
+      "type": "parenthetical",
+      "sourceLineIndex": 5
+    },
+    {
+      "line": "bibendum, sagittis eros ",
+      "offset": 329,
+      "length": 24,
+      "type": "parenthetical",
+      "sourceLineIndex": 5
+    },
+    {
+      "line": "id, blandit mi. Mauris ",
+      "offset": 353,
+      "length": 23,
+      "type": "parenthetical",
+      "sourceLineIndex": 5
+    },
+    {
+      "line": "dapibus iaculis nisl, at ",
+      "offset": 376,
+      "length": 25,
+      "type": "parenthetical",
+      "sourceLineIndex": 5
+    },
+    {
+      "line": "blandit lacus tincidunt ",
+      "offset": 401,
+      "length": 24,
+      "type": "parenthetical",
+      "sourceLineIndex": 5
+    },
+    {
+      "line": "sit amet.)",
+      "offset": 425,
+      "length": 10,
+      "type": "parenthetical",
+      "sourceLineIndex": 5
+    },
+    {
+      "line": "Nulla eget consequat turpis. Duis quis ",
+      "offset": 436,
+      "length": 39,
+      "type": "character",
+      "sourceLineIndex": 6
+    },
+    {
+      "line": "aliquet massa.",
+      "offset": 475,
+      "length": 14,
+      "type": "character",
+      "sourceLineIndex": 6
+    },
+    {
+      "line": "Vestibulum a arcu sed augue ultrices tempor nec sit amet ",
+      "offset": 490,
+      "length": 57,
+      "type": "action",
+      "sourceLineIndex": 7
+    },
+    {
+      "line": "felis.",
+      "offset": 547,
+      "length": 6,
+      "type": "action",
+      "sourceLineIndex": 7
+    },
+    {
+      "line": "",
+      "offset": 554,
+      "length": 0,
+      "type": "general",
+      "sourceLineIndex": 8
+    },
+    {
+      "line": "Integer libero elit, tristique nec ",
+      "offset": 555,
+      "length": 35,
+      "type": "dialogue",
+      "sourceLineIndex": 9
+    },
+    {
+      "line": "eros non, sollicitudin ornare ",
+      "offset": 590,
+      "length": 30,
+      "type": "dialogue",
+      "sourceLineIndex": 9
+    },
+    {
+      "line": "purus. Nam et hendrerit dui, vel ",
+      "offset": 620,
+      "length": 33,
+      "type": "dialogue",
+      "sourceLineIndex": 9
+    },
+    {
+      "line": "iaculis sem.",
+      "offset": 653,
+      "length": 12,
+      "type": "dialogue",
+      "sourceLineIndex": 9
+    },
+    {
+      "line": "",
+      "offset": 666,
+      "length": 0,
+      "type": "general",
+      "sourceLineIndex": 10
+    },
+    {
+      "line": "Etiam sed velit ",
+      "offset": 667,
+      "length": 16,
+      "type": "transition",
+      "sourceLineIndex": 11
+    },
+    {
+      "line": "a tellus commodo ",
+      "offset": 683,
+      "length": 17,
+      "type": "transition",
+      "sourceLineIndex": 11
+    },
+    {
+      "line": "fringilla ",
+      "offset": 700,
+      "length": 10,
+      "type": "transition",
+      "sourceLineIndex": 11
+    },
+    {
+      "line": "dapibus a sem. ",
+      "offset": 710,
+      "length": 15,
+      "type": "transition",
+      "sourceLineIndex": 11
+    },
+    {
+      "line": "Vivamus non imperdiet ipsum, non accumsan justo. Sed eget ",
+      "offset": 726,
+      "length": 58,
+      "type": "shot",
+      "sourceLineIndex": 12
+    },
+    {
+      "line": "feugiat lectus. Aenean non egestas libero. Donec egestas urna ",
+      "offset": 784,
+      "length": 62,
+      "type": "shot",
+      "sourceLineIndex": 12
+    },
+    {
+      "line": "mattis convallis maximus.",
+      "offset": 846,
+      "length": 25,
+      "type": "shot",
+      "sourceLineIndex": 12
+    }
+  ]
+}
