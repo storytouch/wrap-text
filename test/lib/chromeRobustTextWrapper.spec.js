@@ -1,10 +1,10 @@
 const assert = require('assert');
 const test = require('testit');
 const ChromeRobustTextWrapper = require('../../lib/chromeRobustTextWrapper');
-const etherpadDocumentFixture = require('../fixtures/etherpad-document.json');
+const complexTextFixture = require('../fixtures/complex-text.json');
 
 let documentLines;
-let widthPerType;
+let types;
 let options;
 
 const subject = (...args) => {
@@ -16,8 +16,12 @@ test('ChromeRobustTextWrapper', () => {
   // produce the same output of Chrome CSS break-word algorithm,
   // but does not trim lines
   test('with a text with only one line type', () => {
-    widthPerType = {
-      any_type: 15,
+    types = {
+      any_type: {
+        width: 15,
+        marginTop: 7,
+        lineHeight: 5,
+      },
     };
 
     documentLines = [{
@@ -26,7 +30,7 @@ test('ChromeRobustTextWrapper', () => {
     }];
 
     test('all lines should have a maximum of the type width + 1 whitespace', () => {
-      const result = subject(documentLines, widthPerType);
+      const result = subject(documentLines, types);
       result.forEach((line) => assert(line.length <= 16));
     });
 
@@ -38,12 +42,12 @@ test('ChromeRobustTextWrapper', () => {
         'adipiscing ',
         'elit.',
       ];
-      const result = subject(documentLines, widthPerType);
+      const result = subject(documentLines, types);
       assert.deepEqual(result, expectedLines);
     });
 
     test('preserves the original text', () => {
-      const result = subject(documentLines, widthPerType);
+      const result = subject(documentLines, types);
       const reconstuctedText = result.join('');
       const originalText = documentLines.map((entry) => entry.text).join('\n');
       assert.deepEqual(reconstuctedText, originalText);
@@ -53,7 +57,7 @@ test('ChromeRobustTextWrapper', () => {
       options = { richOutput: true };
 
       test('returns each line with its expected offset and length', () => {
-        const result = subject(documentLines, widthPerType, options);
+        const result = subject(documentLines, types, options);
         result.forEach((entry) => {
           const sourceDocumentLine = documentLines[entry.parentIndex];
           const { text } = sourceDocumentLine;
@@ -61,17 +65,90 @@ test('ChromeRobustTextWrapper', () => {
           assert.deepEqual(entry.line, textSubstr);
         });
       });
+
+      test('returns the expected position of each line', () => {
+        const expectedY0 = [7, 12, 17, 22, 27];
+        const result = subject(documentLines, types, options);
+        assert.deepEqual(result.map((entry) => entry.y0), expectedY0);
+      });
     });
   });
 
   test('with a text with many line types', () => {
-    widthPerType = etherpadDocumentFixture.widthPerType;
-    documentLines = etherpadDocumentFixture.documentLines;
+    types = {
+      type_1: {
+        width: 1,
+        marginTop: 2,
+        marginBottom: 10,
+        lineHeight: 5,
+      },
+      type_2: {
+        width: 9,
+        marginTop: 4,
+        lineHeight: 8,
+      },
+    };
+
+    documentLines = [{
+      text: 'a b c',
+      type: 'type_1',
+    }, {
+      text: 'invisible',
+      type: 'type_2',
+      visible: false,
+    }, {
+      text: 'd e',
+      type: 'type_2',
+    }];
+
+    options = {
+      richOutput: true,
+    };
+
+    test('returns the expected lines', () => {
+      const expectedLines = [
+        'a ',
+        'b ',
+        'c',
+        'invisible',
+        'd e',
+      ];
+      const result = subject(documentLines, types, options);
+      assert.deepEqual(result.map((entry) => entry.line), expectedLines);
+    });
+
+    test('returns the expected parent index each line', () => {
+      const expectedIndexes = [0, 0, 0, 1, 2];
+      const result = subject(documentLines, types, options);
+      assert.deepEqual(result.map((entry) => entry.parentIndex), expectedIndexes);
+    });
+
+    test('returns the expected position of each line', () => {
+      const expectedY0 = [2, 7, 12, 27, 31];
+      const result = subject(documentLines, types, options);
+      assert.deepEqual(result.map((entry) => entry.y0), expectedY0);
+    });
+
+    test('returns each line with its expected offset and length', () => {
+      const allText = documentLines
+        .map((entry) => entry.text)
+        .join('\n');
+      const result = subject(documentLines, types, options);
+      result.forEach((entry) => {
+        const textSubstr = allText.substr(entry.offset, entry.length);
+        assert.deepEqual(entry.line, textSubstr);
+      });
+    });
+  });
+
+  test('with a complex text', () => {
+    const { expectedOutput } = complexTextFixture;
+    types = complexTextFixture.types;
+    documentLines = complexTextFixture.documentLines;
     options = { richOutput: true };
 
     test('produces the expected lines', () => {
-      const result = subject(documentLines, widthPerType, options);
-      const { expectedOutput } = etherpadDocumentFixture;
+      const result = subject(documentLines, types, options);
       result.forEach((entry, index) => {
         const expectedOutputText = expectedOutput[index].line;
         assert.deepEqual(entry.line, expectedOutputText);
@@ -79,7 +156,7 @@ test('ChromeRobustTextWrapper', () => {
     });
 
     test('preserves the original text of each line', () => {
-      const result = subject(documentLines, widthPerType, options);
+      const result = subject(documentLines, types, options);
       documentLines.forEach((documentLine, index) => {
         const reconstuctedText = result
           .filter((entry) => entry.parentIndex === index)
@@ -93,10 +170,18 @@ test('ChromeRobustTextWrapper', () => {
       const allText = documentLines
         .map((entry) => entry.text)
         .join('\n');
-      const result = subject(documentLines, widthPerType, options);
+      const result = subject(documentLines, types, options);
       result.forEach((entry) => {
         const textSubstr = allText.substr(entry.offset, entry.length);
         assert.deepEqual(entry.line, textSubstr);
+      });
+    });
+
+    test('calcutates the expected position of each line', () => {
+      const result = subject(documentLines, types, options);
+      result.forEach((entry, index) => {
+        const expectedY0 = expectedOutput[index].y0;
+        assert.deepEqual(entry.y0, expectedY0);
       });
     });
   });
