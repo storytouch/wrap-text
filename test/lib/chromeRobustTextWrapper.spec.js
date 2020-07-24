@@ -62,7 +62,7 @@ test('ChromeRobustTextWrapper', () => {
           const sourceDocumentLine = documentLines[entry.parentIndex];
           const { text } = sourceDocumentLine;
           const textSubstr = text.substr(entry.offset, entry.length);
-          assert.deepEqual(entry.line, textSubstr);
+          assert.deepEqual(entry.text, textSubstr);
         });
       });
 
@@ -114,7 +114,7 @@ test('ChromeRobustTextWrapper', () => {
         'd e',
       ];
       const result = subject(documentLines, types, options);
-      assert.deepEqual(result.map((entry) => entry.line), expectedLines);
+      assert.deepEqual(result.map((entry) => entry.text), expectedLines);
     });
 
     test('returns the expected parent index each line', () => {
@@ -136,7 +136,7 @@ test('ChromeRobustTextWrapper', () => {
       const result = subject(documentLines, types, options);
       result.forEach((entry) => {
         const textSubstr = allText.substr(entry.offset, entry.length);
-        assert.deepEqual(entry.line, textSubstr);
+        assert.deepEqual(entry.text, textSubstr);
       });
     });
   });
@@ -150,8 +150,8 @@ test('ChromeRobustTextWrapper', () => {
     test('produces the expected lines', () => {
       const result = subject(documentLines, types, options);
       result.forEach((entry, index) => {
-        const expectedOutputText = expectedOutput[index].line;
-        assert.deepEqual(entry.line, expectedOutputText);
+        const expectedOutputText = expectedOutput[index].text;
+        assert.deepEqual(entry.text, expectedOutputText);
       });
     });
 
@@ -160,7 +160,7 @@ test('ChromeRobustTextWrapper', () => {
       documentLines.forEach((documentLine, index) => {
         const reconstuctedText = result
           .filter((entry) => entry.parentIndex === index)
-          .map((entry) => entry.line)
+          .map((entry) => entry.text)
           .join('');
         assert.deepEqual(reconstuctedText, documentLine.text);
       });
@@ -173,7 +173,7 @@ test('ChromeRobustTextWrapper', () => {
       const result = subject(documentLines, types, options);
       result.forEach((entry) => {
         const textSubstr = allText.substr(entry.offset, entry.length);
-        assert.deepEqual(entry.line, textSubstr);
+        assert.deepEqual(entry.text, textSubstr);
       });
     });
 

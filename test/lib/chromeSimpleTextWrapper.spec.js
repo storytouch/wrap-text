@@ -50,7 +50,7 @@ test('ChromeSimpleTextWrapper', () => {
           const result = subject(text, width, options);
           result.forEach((entry) => {
             const textSubstr = text.substr(entry.offset, entry.length);
-            assert.deepEqual(textSubstr, entry.line);
+            assert.deepEqual(textSubstr, entry.text);
           });
         });
       });
@@ -89,7 +89,7 @@ test('ChromeSimpleTextWrapper', () => {
           const result = subject(text, width, options);
           result.forEach((entry) => {
             const textSubstr = text.substr(entry.offset, entry.length);
-            assert.deepEqual(textSubstr, entry.line);
+            assert.deepEqual(textSubstr, entry.text);
           });
         });
 
@@ -97,7 +97,7 @@ test('ChromeSimpleTextWrapper', () => {
           const result = subject(text, width, options);
           const reconstructedText = result.reduce((acc, entry) => {
             let fullText = acc;
-            fullText += entry.line;
+            fullText += entry.text;
             if (entry.originalBreak) fullText += '\n';
             return fullText;
           }, '');
