@@ -18,7 +18,7 @@ test('ChromeRobustTextWrapper', () => {
   test('with a text with only one line type', () => {
     types = {
       any_type: {
-        width: 15,
+        width: 120,
         marginTop: 7,
         lineHeight: 5,
       },
@@ -77,13 +77,20 @@ test('ChromeRobustTextWrapper', () => {
   test('with a text with many line types', () => {
     types = {
       type_1: {
-        width: 1,
+        width: 10,
         marginTop: 2,
         marginBottom: 10,
         lineHeight: 5,
+        font: '300 15px Roboto, sans-serif',
+        fontConfig: {
+          family: 'Roboto',
+          weight: '300',
+          style: 'normal',
+          path: '/usr/src/app/test/fixtures/fonts/Roboto/Roboto-Light.ttf',
+        },
       },
       type_2: {
-        width: 9,
+        columns: 9,
         marginTop: 4,
         lineHeight: 8,
       },

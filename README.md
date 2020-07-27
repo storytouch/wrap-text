@@ -108,19 +108,23 @@ const output = wrapText(input, 15, { richOutput: true });
 This algorithm allows multiple font characteristics, but only monospaced. Each font property, such as width, margins, and line-height, is mapped to a defined type.
 
 * **documentLines** The input lines, structured by its content, type, and further options, such as:
-  * **text: string** The line text.
-  * **type: string** The line type. This type must match with one of the types defined in the `types` parameter. All styles and properties used by the algorithm are based on the type definition. However, these properties can be overridden using specific values in each `documentLine`, as bellow.
-  * **width** Number of columns to wrap the text into.
-  * **marginTop: number** Overrides the `marginTop` value defined by the associated `type` and applies it only to this line.
-  * **marginBottom: number** Overrides the `marginBottom` value defined by the associated `type` and applies it only to this line. 
-  * **lineHeight: number** Overrides the `lineHeight` value defined by the associated `type` and applies it only to this line. 
-  * **visible: number** Overrides the `visible` value defined by the associated `type` and applies it only to this line. 
+  * **text: string** The line text. It is required.
+  * **type: string** The line type. This type must match with one of the types defined in the `types` parameter. All styles and properties used by the algorithm are based on the type definition. However, these properties can be overridden using specific values in each `documentLine`, as bellow. It is required.
+  * **[other options]** All options defined in `types` can be overridden in the scope of the line (except `fontConfig`). In that case, those specific options will apply only to the respective line. It is optional.
 * **types** A HashMap with all type definitions used by `documentLines`:
-  * **[key]: string** The HashMap key is the type name.
-  * **marginTop: number** Top margin used to calculate the `y0` position of each line. The `margin-top` is used only in the first wrapped line of each input line.
-  * **marginBottom: number** Bottom margin used to calculate the `y0` position of each line. The `margin-bottom` is used only in the last wrapped line of each input line.
-  * **lineHeight: number** The height of each line of this type. 
-  * **visible: number** When `visible` is `false`, lines of this type do not affect the `y0` calc of other lines.
+  * **[key]: string** The HashMap key is the type name. Is is required.
+  * **columns** Number of characters per line. This is recommended for monospace fonts, as it does not use complex calculations (drawing and measuring text on a canvas). If you intend to use non-monospaced fonts, use `width`.
+  * **width** Maximum line width in pixels. It is used especially for non-monospaced fonts. For monospace fonts, use `columns`.
+  * **marginTop: number** Top margin used to calculate the `y0` position of each line. The `margin-top` is used only in the first wrapped line of each input line. It is optional.
+  * **marginBottom: number** Bottom margin used to calculate the `y0` position of each line. The `margin-bottom` is used only in the last wrapped line of each input line. It is optional.
+  * **lineHeight: number** The height of each line of this type. It is optional.
+  * **visible: number** When `visible` is `false`, lines of this type do not affect the `y0` calc of other lines. It is optional.
+  * **font: string** The font to be applied to the text, using the [`CanvasRenderingContext2D.font`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/font) format. It is optional. The default value is `13px Courier, monospace`.
+  * **fontConfig: any** If you want to use external fonts, you should specify its location and properties. Is is optional. These options are used in [`registerFont`](https://github.com/Automattic/node-canvas#registerfont) method. With the exception of the `path`, all other properties with properties resemble the CSS properties that are specified in `@font-face rules`. You must specify at least `family`. The`weight` and `style` are optional and default to `normal`.
+      * **path: string** The `.ttf` file path.
+      * **family: string** The font family name. E.g.: `Roboto`, `Comic Sans`.
+      * **weight: string** The font weight. E.g.: `bold`, `300`.
+      * **style: string** The font style. E.g.: `italic`.
 * **options**
   * **browser: string** Line-breaking algorithms may differ from browser to browser. So far, only the Google Chrome browser is supported. The default value is `chrome`.
   * **richOutput: boolean** Setting this option to `false`, an array of strings will be returned. When it is `true`, an array of objects is returned such as
@@ -133,6 +137,7 @@ This algorithm allows multiple font characteristics, but only monospaced. Each f
       >   originalBreak: boolean,
       >   y0: number,
       >   height: number,
+      >   width: number,
       >   parentIndex: number,
       >   visible: boolean,
       > }]
@@ -144,6 +149,7 @@ This algorithm allows multiple font characteristics, but only monospaced. Each f
       * **originalBreak** It is `true` when the line ends with a line break `\n` that was already in the original text.
       * **y0** The `y-axis` position of the line origin.
       * **height** The line height.
+      * **width** The line width.
       * **parentIndex** The index of the associated input line.
       * **visible** Whether the line is visible or not.
 
@@ -154,13 +160,20 @@ const { wrapTextRobust } = require('wrap-text');
 
 const types = {
   type_1: {
-    width: 1,
+    width: 10,
     marginTop: 2,
     marginBottom: 10,
     lineHeight: 5,
+    font: '300 15px Roboto, sans-serif',
+    fontConfig: {
+      family: 'Roboto',
+      weight: '300',
+      style: 'normal',
+      path: '/path/of/my/fonts/Roboto-Light.ttf',
+    },
   },
   type_2: {
-    width: 9,
+    columns: 9,
     marginTop: 4,
     lineHeight: 8,
   },
@@ -194,54 +207,59 @@ const output = wrapTextRobust(documentLines, types, { richOutput: true });
 /* 
 [
   {
-    y0: 2,
-    length: 2,
-    text: 'a ',
     height: 5,
+    length: 2,
     offset: 0,
     parentIndex: 0,
+    text: 'a ',
     type: 'type_1',
-    visible: true
+    visible: true,
+    width: 12,
+    y0: 2
   },
   {
-    y0: 7,
-    length: 2,
-    text: 'b ',
     height: 5,
+    length: 2,
     offset: 2,
     parentIndex: 0,
+    text: 'b ',
     type: 'type_1',
-    visible: true
+    visible: true,
+    width: 12,
+    y0: 7
   },
   {
-    y0: 12,
-    length: 1,
-    text: 'c',
     height: 5,
+    length: 1,
     offset: 4,
     parentIndex: 0,
+    text: 'c',
     type: 'type_1',
-    visible: true
+    visible: true,
+    width: 8,
+    y0: 12
   },
   {
-    y0: 27,
-    length: 9,
-    text: 'invisible',
     height: 8,
+    length: 9,
     offset: 6,
     parentIndex: 1,
+    text: 'invisible',
     type: 'type_2',
-    visible: false
+    visible: false,
+    width: 9,
+    y0: 27
   },
   {
-    y0: 31,
-    length: 3,
-    text: 'd e',
     height: 8,
+    length: 3,
     offset: 16,
     parentIndex: 2,
+    text: 'd e',
     type: 'type_2',
-    visible: true
+    visible: true,
+    width: 3,
+    y0: 31
   }
 ]
 */
