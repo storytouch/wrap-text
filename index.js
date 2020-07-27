@@ -12,8 +12,6 @@ const wrapText = (text, width, options = {}) => {
   // merge options  with default values
   const defaultOptions = {
     browser: 'chrome',
-    algorithm: 'simple',
-    richOutput: false,
   };
 
   const mergedOptions = {
@@ -22,13 +20,41 @@ const wrapText = (text, width, options = {}) => {
   };
 
   // perform the choosen algorithm
-  const {
-    browser,
-    algorithm,
-  } = mergedOptions;
+  const { browser } = mergedOptions;
+  const algorithm = 'simple';
 
   const algorithmInstance = getAlgorithm(browser, algorithm);
   return algorithmInstance.perform(text, width, options);
 };
 
-module.exports = wrapText;
+const wrapTextRobust = (documentLines, types, options = {}) => {
+  // validates the input values
+  if (
+    !documentLines
+    || !types
+    || !documentLines.constructor === Array
+    || !types.constructor === Object
+  ) {
+    throw new Error('Invalid arguments');
+  }
+
+  // merge options  with default values
+  const defaultOptions = {
+    browser: 'chrome',
+  };
+
+  const mergedOptions = {
+    ...defaultOptions,
+    ...options,
+  };
+
+  // perform the choosen algorithm
+  const { browser } = mergedOptions;
+  const algorithm = 'robust';
+
+  const algorithmInstance = getAlgorithm(browser, algorithm);
+  return algorithmInstance.perform(documentLines, types, options);
+};
+
+exports.wrapText = wrapText;
+exports.wrapTextRobust = wrapTextRobust;

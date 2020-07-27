@@ -21,7 +21,7 @@ $ npm install https://github.com/storytouch/wrap-text.git
 ## Usage
 
 ```js
-const wrapText = require('wrap-text');
+const { wrapText } = require('wrap-text');
 
 const input  = 'Lorem\nipsum dolor sit amet,\nconsectetur adipiscing \nelit.';
 const output = wrapText(input, 15);
@@ -52,7 +52,7 @@ This algorithm considers that all text have the same font characteristics, wrapp
 * **text** The text itself. Newline characters `\n` are preserved.
 * **columns** Number of columns to wrap the text into.
 * **options**
-  * **browser: string** Line break algorithms may differ from browser to browser. So far, only Google Chrome browser is supported. The default value is `chrome`.
+  * **browser: string** Line-breaking algorithms may differ from browser to browser. So far, only the Google Chrome browser is supported. The default value is `chrome`.
   * **richOutput: boolean** Setting this option to `false`, an array of strings will be returned. When it is `true`, an array of objects is returned such as
       > ```ts
       > [{
@@ -70,7 +70,7 @@ This algorithm considers that all text have the same font characteristics, wrapp
 #### Examples
 
 ```js
-const wrapText = require('wrap-text');
+const { wrapText } = require('wrap-text');
 const input = 'Lorem\nipsum dolor sit amet,\nconsectetur adipiscing \nelit.';
 
 const output = wrapText(input, 15, { richOutput: true });
@@ -105,23 +105,24 @@ const output = wrapText(input, 15, { richOutput: true });
 > wrapTextRobust(documentLines: any[], types: Array<{[string]: any}>, options?: any) => any[]
 > ```
 
-This algorithm considers that all text have the same font characteristics, wrapping all its content into columns with a fixed and constant value defined by `column`.
+This algorithm allows multiple font characteristics, but only monospaced. Each font property, such as width, margins, and line-height, is mapped to a defined type.
 
-* **documentLines** The input lines, structured by its type and further options, such as:
-  * **text: string** The text of each line.
-  * **type: string** The type of the lines. This type must match with one of the types defined in `types` parameter. All styles and properties used by the algorithm are based on the type definition. However, this properties can be overrided using specific values in each `documentLine`, as bellow.
+* **documentLines** The input lines, structured by its content, type, and further options, such as:
+  * **text: string** The line text.
+  * **type: string** The line type. This type must match with one of the types defined in the `types` parameter. All styles and properties used by the algorithm are based on the type definition. However, these properties can be overridden using specific values in each `documentLine`, as bellow.
+  * **width** Number of columns to wrap the text into.
   * **marginTop: number** Overrides the `marginTop` value defined by the associated `type` and applies it only to this line.
   * **marginBottom: number** Overrides the `marginBottom` value defined by the associated `type` and applies it only to this line. 
   * **lineHeight: number** Overrides the `lineHeight` value defined by the associated `type` and applies it only to this line. 
   * **visible: number** Overrides the `visible` value defined by the associated `type` and applies it only to this line. 
 * **types** A HashMap with all type definitions used by `documentLines`:
   * **[key]: string** The HashMap key is the type name.
-  * **marginTop: number** Top margin used  to calculate the `y0` position of each line. The `margin-top` is used only in the first wrapped line of each input line.
-  * **marginBottom: number** Bottom margin used  to calculate the `y0` position of each line. The `margin-bottom` is used only in the last wrapped line of each input line.
+  * **marginTop: number** Top margin used to calculate the `y0` position of each line. The `margin-top` is used only in the first wrapped line of each input line.
+  * **marginBottom: number** Bottom margin used to calculate the `y0` position of each line. The `margin-bottom` is used only in the last wrapped line of each input line.
   * **lineHeight: number** The height of each line of this type. 
-  * **visible: number** When `visible` is `false`, lines of this type does not affect the `y0` calc of other lines.
+  * **visible: number** When `visible` is `false`, lines of this type do not affect the `y0` calc of other lines.
 * **options**
-  * **browser: string** Line break algorithms may differ from browser to browser. So far, only Google Chrome browser is supported. The default value is `chrome`.
+  * **browser: string** Line-breaking algorithms may differ from browser to browser. So far, only the Google Chrome browser is supported. The default value is `chrome`.
   * **richOutput: boolean** Setting this option to `false`, an array of strings will be returned. When it is `true`, an array of objects is returned such as
       > ```ts
       > [{
@@ -144,12 +145,12 @@ This algorithm considers that all text have the same font characteristics, wrapp
       * **y0** The `y-axis` position of the line origin.
       * **height** The line height.
       * **parentIndex** The index of the associated input line.
-      * **visible** Whether the line is visible or not..
+      * **visible** Whether the line is visible or not.
 
 #### Examples
 
 ```js
-const wrapText = require('wrap-text');
+const { wrapTextRobust } = require('wrap-text');
 
 const types = {
   type_1: {
