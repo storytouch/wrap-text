@@ -29,12 +29,9 @@ const wrapText = (text, width, options = {}) => {
 
 const wrapTextRobust = (documentLines, types, options = {}) => {
   // validates the input values
-  if (
-    !documentLines
-    || !types
-    || !documentLines.constructor === Array
-    || !types.constructor === Object
-  ) {
+  const areParamsPresent = documentLines && types;
+  const areParamsTyped = documentLines.constructor === Array && types.constructor === Object;
+  if (!areParamsPresent || !areParamsTyped) {
     throw new Error('Invalid arguments');
   }
 

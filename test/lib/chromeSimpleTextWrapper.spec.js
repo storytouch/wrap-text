@@ -107,7 +107,7 @@ test('ChromeSimpleTextWrapper', () => {
     });
   });
 
-  test('with a word larger then the specified width', () => {
+  test('with a word larger than the specified width', () => {
     text = 'Loremipsum';
     width = 5;
 
@@ -126,7 +126,7 @@ test('ChromeSimpleTextWrapper', () => {
     });
   });
 
-  test('with words larger then the specified width', () => {
+  test('with words larger than the specified width', () => {
     text = 'A Loremipsum dolor sit\namet, consecteturadipiscing a elit.';
     width = 5;
 
