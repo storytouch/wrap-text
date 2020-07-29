@@ -265,6 +265,22 @@ const output = wrapTextRobust(documentLines, types, { richOutput: true });
 */
 ```
 
+## Benchmark
+
+A simple benchmark test with 2k input lines producing 38k output lines was performed considering two configurations: using `columns` (no need to render the font) and using `width` (needs to render the text with the font inside a canvas). The test was also run on Node.js and Browser (Google Chrome). Here are some preliminary results:
+
+```
+Running on Node.js
+==================
+using column:   197.645ms
+using width : 15671.907ms
+
+Running on Browser
+==================
+using column:  67.528ms
+using width : 534.700ms
+```
+
 ## Related
 
 - [wrap-ansi](https://github.com/chalk/wrap-ansi) - Wordwrap a string with ANSI escape codes

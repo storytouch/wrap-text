@@ -7,6 +7,8 @@
     "test": "npm run lint && npm run test:unit",
     "test:unit": "find ./test -name \"*.spec.js\" -print0 | xargs -0 -n1 node $1",
     "test:unit:debug": "node --inspect-brk",
+    "test:benchmark:node": "node test/benchmark/benchmark.js",
+    "test:benchmark:browser": "browserify test/benchmark/benchmark.js >> test/benchmark/bundle.js && echo 'Open the file test/benchmark/browser.html in your browser and check the console output'",
     "lint": "eslint --ignore-path .gitignore ."
   },
   "repository": {
@@ -28,6 +30,7 @@
   },
   "homepage": "https://github.com/storytouch/wrap-text#readme",
   "devDependencies": {
+    "browserify": "^16.5.1",
     "eslint": "^7.3.1",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.21.2",
