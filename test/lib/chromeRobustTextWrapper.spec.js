@@ -67,7 +67,7 @@ test('ChromeRobustTextWrapper', () => {
       });
 
       test('returns the expected position of each line', () => {
-        const expectedY0 = [7, 12, 17, 22, 27];
+        const expectedY0 = [0, 12, 17, 22, 27];
         const result = subject(documentLines, types, options);
         assert.deepEqual(result.map((entry) => entry.y0), expectedY0);
       });
@@ -131,9 +131,39 @@ test('ChromeRobustTextWrapper', () => {
     });
 
     test('returns the expected position of each line', () => {
-      const expectedY0 = [2, 7, 12, 27, 31];
+      const expectedY0 = [0, 7, 12, -1, 27];
       const result = subject(documentLines, types, options);
       assert.deepEqual(result.map((entry) => entry.y0), expectedY0);
+    });
+
+    test('returns the expected height of each line', () => {
+      const expectedY0 = [5, 5, 5, 0, 8];
+      const result = subject(documentLines, types, options);
+      assert.deepEqual(result.map((entry) => entry.height), expectedY0);
+    });
+
+    test('returns the expected marginTop of each line', () => {
+      const expectedY0 = [2, 0, 0, 0, 4];
+      const result = subject(documentLines, types, options);
+      assert.deepEqual(result.map((entry) => entry.marginTop), expectedY0);
+    });
+
+    test('returns the expected marginBottom of each line', () => {
+      const expectedY0 = [0, 0, 10, 0, 0];
+      const result = subject(documentLines, types, options);
+      assert.deepEqual(result.map((entry) => entry.marginBottom), expectedY0);
+    });
+
+    test('allows to reconstruct the positions', () => {
+      const result = subject(documentLines, types, options);
+      const visibleLines = result.filter((line) => line.visible);
+      let y = 0;
+      for (let i = 0; i < visibleLines.length - 1; i += 1) {
+        const line = visibleLines[i];
+        const nextLine = visibleLines[i + 1];
+        y += line.height + line.marginTop + line.marginBottom;
+        assert.deepEqual(y, nextLine.y0);
+      }
     });
 
     test('returns each line with its expected offset and length', () => {
@@ -184,12 +214,15 @@ test('ChromeRobustTextWrapper', () => {
       });
     });
 
-    test('calcutates the expected position of each line', () => {
+    test('allows to reconstruct the positions', () => {
       const result = subject(documentLines, types, options);
-      result.forEach((entry, index) => {
-        const expectedY0 = expectedOutput[index].y0;
-        assert.deepEqual(entry.y0, expectedY0);
-      });
+      let y = 0;
+      for (let i = 0; i < result.length - 1; i += 1) {
+        const line = result[i];
+        const nextLine = result[i + 1];
+        y += line.height + line.marginTop + line.marginBottom;
+        assert.deepEqual(y, nextLine.y0);
+      }
     });
   });
 });

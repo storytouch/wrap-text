@@ -115,10 +115,10 @@ This algorithm allows multiple font characteristics, but only monospaced. Each f
   * **[key]: string** The HashMap key is the type name. It is required.
   * **columns** Number of characters per line. This is recommended for monospace fonts, as it does not use complex calculations (drawing and measuring text on a canvas). If you intend to use non-monospaced fonts, use `width`.
   * **width** Maximum line width in pixels. It is used especially for non-monospaced fonts. For monospace fonts, use `columns`.
-  * **marginTop: number** Top margin used to calculate the `y0` position of each line. The `margin-top` is used only in the first wrapped line of each input line. It is optional.
-  * **marginBottom: number** Bottom margin used to calculate the `y0` position of each line. The `margin-bottom` is used only in the last wrapped line of each input line. It is optional.
+  * **marginTop: number** Top margin used to calculate the position of each line. The `margin-top` is used only in the first wrapped line of each input line. It is optional.
+  * **marginBottom: number** Bottom margin used to calculate the position of each line. The `margin-bottom` is used only in the last wrapped line of each input line. It is optional.
   * **lineHeight: number** The height of each line of this type. It is optional.
-  * **visible: number** When `visible` is `false`, lines of this type do not affect the `y0` calc of other lines. It is optional.
+  * **visible: number** When `visible` is `false`, lines of this type do not affect the position of other lines. It is optional.
   * **font: string** The font to be applied to the text, using the [`CanvasRenderingContext2D.font`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/font) format. It is optional. The default value is `13px Courier, monospace`.
   * **fontConfig: any** If you want to use external fonts, you should specify its location and properties. It is optional. These options are used in [`registerFont`](https://github.com/Automattic/node-canvas#registerfont) method. With the exception of the `path`, all other properties with properties resemble the CSS properties that are specified in `@font-face rules`. You must specify at least `family`. The`weight` and `style` are optional and default to `normal`.
       * **path: string** The `.ttf` file path.
@@ -130,28 +130,32 @@ This algorithm allows multiple font characteristics, but only monospaced. Each f
   * **richOutput: boolean** Setting this option to `false`, an array of strings will be returned. When it is `true`, an array of objects is returned such as
       > ```ts
       > [{
+      >   height: number,
+      >   length: number,
+      >   marginBottom: number,
+      >   marginTop: number,
+      >   offset: number,
+      >   originalBreak: boolean,
+      >   parentIndex: number,
       >   text: string,
       >   type: string,
-      >   offset: number,
-      >   length: number,
-      >   originalBreak: boolean,
-      >   y0: number,
-      >   height: number,
-      >   width: number,
-      >   parentIndex: number,
       >   visible: boolean,
+      >   width: number,
+      >   y0: number,
       > }]
       > ```
+      * **height** The line height.
+      * **length** Number of characters in the line.
+      * **marginBottom** The line margin-bottom.
+      * **marginTop** The line margin-top.
+      * **offset** The index of the first character of the line relative to the original text.
+      * **originalBreak** It is `true` when the line ends with a line break `\n` that was already in the original text.
+      * **parentIndex** The index of the associated input line.
       * **text** The text content of the wrapped line.
       * **type** The same type of the associated input line.
-      * **offset** The index of the first character of the line relative to the original text.
-      * **length** Number of characters in the line.
-      * **originalBreak** It is `true` when the line ends with a line break `\n` that was already in the original text.
-      * **y0** The `y-axis` position of the line origin.
-      * **height** The line height.
-      * **width** The line width.
-      * **parentIndex** The index of the associated input line.
       * **visible** Whether the line is visible or not.
+      * **width** The line width.
+      * **y0** The `y-axis` position of the line origin. If the line is not visible, this value will be `-1`.
 
 #### Examples
 
@@ -209,57 +213,67 @@ const output = wrapTextRobust(documentLines, types, { richOutput: true });
   {
     height: 5,
     length: 2,
+    marginTop: 2,
+    marginBottom: 0,
     offset: 0,
+    width: 12,
+    y0: 0,
     parentIndex: 0,
     text: 'a ',
     type: 'type_1',
-    visible: true,
-    width: 12,
-    y0: 2
+    visible: true
   },
   {
     height: 5,
     length: 2,
+    marginTop: 0,
+    marginBottom: 0,
     offset: 2,
+    width: 12,
+    y0: 7,
     parentIndex: 0,
     text: 'b ',
     type: 'type_1',
-    visible: true,
-    width: 12,
-    y0: 7
+    visible: true
   },
   {
     height: 5,
     length: 1,
+    marginTop: 0,
+    marginBottom: 10,
     offset: 4,
+    width: 8,
+    y0: 12,
     parentIndex: 0,
     text: 'c',
     type: 'type_1',
-    visible: true,
-    width: 8,
-    y0: 12
+    visible: true
   },
   {
-    height: 8,
+    height: 0,
     length: 9,
+    marginTop: 0,
+    marginBottom: 0,
     offset: 6,
+    width: 9,
+    y0: -1,
     parentIndex: 1,
     text: 'invisible',
     type: 'type_2',
-    visible: false,
-    width: 9,
-    y0: 27
+    visible: false
   },
   {
     height: 8,
     length: 3,
+    marginTop: 4,
+    marginBottom: 0,
     offset: 16,
+    width: 3,
+    y0: 27,
     parentIndex: 2,
     text: 'd e',
     type: 'type_2',
-    visible: true,
-    width: 3,
-    y0: 31
+    visible: true
   }
 ]
 */
