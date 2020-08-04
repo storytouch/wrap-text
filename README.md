@@ -112,7 +112,7 @@ This algorithm allows multiple font characteristics, but only monospaced. Each f
   * **type: string** The line type. This type must match with one of the types defined in the `types` parameter. All styles and properties used by the algorithm are based on the type definition. However, these properties can be overridden using specific values in each `documentLine`, as bellow. It is required.
   * **[other options]** All options defined in `types` can be overridden in the scope of the line (except `fontConfig`). In that case, those specific options will apply only to the respective line. It is optional.
 * **types** A HashMap with all type definitions used by `documentLines`:
-  * **[key]: string** The HashMap key is the type name. Is is required.
+  * **[key]: string** The HashMap key is the type name. It is required.
   * **columns** Number of characters per line. This is recommended for monospace fonts, as it does not use complex calculations (drawing and measuring text on a canvas). If you intend to use non-monospaced fonts, use `width`.
   * **width** Maximum line width in pixels. It is used especially for non-monospaced fonts. For monospace fonts, use `columns`.
   * **marginTop: number** Top margin used to calculate the `y0` position of each line. The `margin-top` is used only in the first wrapped line of each input line. It is optional.
@@ -120,7 +120,7 @@ This algorithm allows multiple font characteristics, but only monospaced. Each f
   * **lineHeight: number** The height of each line of this type. It is optional.
   * **visible: number** When `visible` is `false`, lines of this type do not affect the `y0` calc of other lines. It is optional.
   * **font: string** The font to be applied to the text, using the [`CanvasRenderingContext2D.font`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/font) format. It is optional. The default value is `13px Courier, monospace`.
-  * **fontConfig: any** If you want to use external fonts, you should specify its location and properties. Is is optional. These options are used in [`registerFont`](https://github.com/Automattic/node-canvas#registerfont) method. With the exception of the `path`, all other properties with properties resemble the CSS properties that are specified in `@font-face rules`. You must specify at least `family`. The`weight` and `style` are optional and default to `normal`.
+  * **fontConfig: any** If you want to use external fonts, you should specify its location and properties. It is optional. These options are used in [`registerFont`](https://github.com/Automattic/node-canvas#registerfont) method. With the exception of the `path`, all other properties with properties resemble the CSS properties that are specified in `@font-face rules`. You must specify at least `family`. The`weight` and `style` are optional and default to `normal`.
       * **path: string** The `.ttf` file path.
       * **family: string** The font family name. E.g.: `Roboto`, `Comic Sans`.
       * **weight: string** The font weight. E.g.: `bold`, `300`.
