@@ -1,53 +1,64 @@
 {
   "types": {
     "action": {
-      "width": 61,
+      "columns": 61,
       "lineHeight": 16,
       "marginTop": 16
     },
     "character": {
-      "width": 38,
+      "columns": 38,
       "lineHeight": 16,
       "marginTop": 16
     },
     "dialogue": {
-      "width": 35,
-      "lineHeight": 16,
-      "marginTop": 0
+      "columns": 35,
+      "lineHeight": 16
     },
     "general": {
-      "width": 61,
-      "lineHeight": 16,
-      "marginTop": 0
+      "columns": 61,
+      "lineHeight": 16
     },
     "heading": {
-      "width": 61,
+      "columns": 61,
       "lineHeight": 16,
       "marginTop": 10
     },
     "parenthetical": {
-      "width": 26,
-      "lineHeight": 16,
-      "marginTop": 0
+      "columns": 26,
+      "lineHeight": 16
     },
     "scene_mark_title": {
-      "width": 68,
+      "width": 547,
       "lineHeight": 18,
       "marginTop": 20,
-      "marginBottom": 5
+      "marginBottom": 5,
+      "font": "300 14px Roboto, sans-serif",
+      "fontConfig": {
+        "family": "Roboto",
+        "weight": "300",
+        "style": "normal",
+        "path": "/usr/src/app/test/fixtures/fonts/Roboto/Roboto-Light.ttf"
+      }
     },
     "scene_mark_summary": {
-      "width": 68,
+      "width": 547,
       "lineHeight": 18,
-      "marginTop": 0
+      "marginTop": 0,
+      "font": "300 14px Roboto, sans-serif",
+      "fontConfig": {
+        "family": "Roboto",
+        "weight": "300",
+        "style": "normal",
+        "path": "/usr/src/app/test/fixtures/fonts/Roboto/Roboto-Light.ttf"
+      }
     },
     "shot": {
-      "width": 61,
+      "columns": 61,
       "lineHeight": 16,
       "marginTop": 32
     },
     "transition": {
-      "width": 16,
+      "columns": 16,
       "lineHeight": 16,
       "marginTop": 16
     }
@@ -58,7 +69,7 @@
       "type": "general"
     },
     {
-      "text": "Nulla facilisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec magna vitae leo sollicitudin faucibus. Ut maximus magna non interdum laoreet. Donec nisi urna, finibus a scelerisque eget, blandit sit amet leo. Nulla blandit auctor tellus a consectetur. ",
+      "text": "NULLA FACILISI. LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT. SED NEC MAGNA VITAE LEO SOLLICITUDIN FAUCIBUS. UT MAXIMUS MAGNA NON INTERDUM LAOREET. DONEC NISI URNA, FINIBUS A SCELERISQUE EGET, BLANDIT SIT AMET LEO. NULLA BLANDIT AUCTOR TELLUS A CONSECTETUR. ",
       "type": "scene_mark_title",
       "marginTop": 32
     },
@@ -67,7 +78,7 @@
       "type": "scene_mark_summary"
     },
     {
-      "text": "Quisque nec sapien nec quam sollicitudin porttitor. Aenean vitae pretium lacus, non euismod nisl. Ut ut porta mauris, bibendum varius lacus. Maecenas ut varius nisi. Curabitur bibendum, tellus vel convallis faucibus, mauris augue mollis dui, posuere congue mauris eros accumsan turpis. Sed vulputate dolor ac augue porta fermentum. In sollicitudin tempor aliquet. ",
+      "text": "QUISQUE NEC SAPIEN NEC QUAM SOLLICITUDIN PORTTITOR. AENEAN VITAE PRETIUM LACUS, NON EUISMOD NISL. UT UT PORTA MAURIS, BIBENDUM VARIUS LACUS. MAECENAS UT VARIUS NISI. CURABITUR BIBENDUM, TELLUS VEL CONVALLIS FAUCIBUS, MAURIS AUGUE MOLLIS DUI, POSUERE CONGUE MAURIS EROS ACCUMSAN TURPIS. SED VULPUTATE DOLOR AC AUGUE PORTA FERMENTUM. IN SOLLICITUDIN TEMPOR ALIQUET. ",
       "type": "scene_mark_title"
     },
     {
@@ -75,7 +86,7 @@
       "type": "scene_mark_summary"
     },
     {
-      "text": "Quisque vel efficitur urna. Suspendisse nec nisi erat. Pellentesque sed tempor tortor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed urna risus, semper quis blandit sed, finibus sit amet mi. Curabitur in mi mauris. Nunc at rutrum turpis, vitae bibendum magna. ",
+      "text": "QUISQUE VEL EFFICITUR URNA. SUSPENDISSE NEC NISI ERAT. PELLENTESQUE SED TEMPOR TORTOR. ORCI VARIUS NATOQUE PENATIBUS ET MAGNIS DIS PARTURIENT MONTES, NASCETUR RIDICULUS MUS. SED URNA RISUS, SEMPER QUIS BLANDIT SED, FINIBUS SIT AMET MI. CURABITUR IN MI MAURIS. NUNC AT RUTRUM TURPIS, VITAE BIBENDUM MAGNA. ",
       "type": "scene_mark_title"
     },
     {
@@ -83,7 +94,7 @@
       "type": "scene_mark_summary"
     },
     {
-      "text": "Sed fermentum tellus est, non blandit dolor facilisis nec. Nulla ut fermentum augue. In ullamcorper pharetra metus, sed imperdiet dolor suscipit eu. Cras convallis tortor sodales dui convallis, ac hendrerit sapien laoreet.",
+      "text": "SED FERMENTUM TELLUS EST, NON BLANDIT DOLOR FACILISIS NEC. NULLA UT FERMENTUM AUGUE. IN ULLAMCORPER PHARETRA METUS, SED IMPERDIET DOLOR SUSCIPIT EU. CRAS CONVALLIS TORTOR SODALES DUI CONVALLIS, AC HENDRERIT SAPIEN LAOREET.",
       "type": "heading"
     },
     {
@@ -91,7 +102,7 @@
       "type": "action"
     },
     {
-      "text": "Donec at porta nisl. Nam id lobortis magna. In vitae tempor justo, nec suscipit sapien. Nunc ut ante ex. Proin sed purus in metus vestibulum finibus. ",
+      "text": "DONEC AT PORTA NISL. NAM ID LOBORTIS MAGNA. IN VITAE TEMPOR JUSTO, NEC SUSCIPIT SAPIEN. NUNC UT ANTE EX. PROIN SED PURUS IN METUS VESTIBULUM FINIBUS. ",
       "type": "scene_mark_title",
       "marginTop": 32
     },
@@ -100,7 +111,7 @@
       "type": "scene_mark_summary"
     },
     {
-      "text": "Phasellus aliquet nec justo eget porta. Sed ac purus quis diam imperdiet condimentum. Donec euismod ultricies sem, sed consequat eros facilisis vel.",
+      "text": "PHASELLUS ALIQUET NEC JUSTO EGET PORTA. SED AC PURUS QUIS DIAM IMPERDIET CONDIMENTUM. DONEC EUISMOD ULTRICIES SEM, SED CONSEQUAT EROS FACILISIS VEL.",
       "type": "heading"
     },
     {
@@ -112,7 +123,7 @@
       "type": "parenthetical"
     },
     {
-      "text": "Nulla eget consequat turpis. Duis quis aliquet massa.",
+      "text": "NULLA EGET CONSEQUAT TURPIS. DUIS QUIS ALIQUET MASSA.",
       "type": "character"
     },
     {
@@ -128,804 +139,828 @@
       "type": "dialogue"
     },
     {
-      "text": "Etiam sed velit a tellus commodo fringilla dapibus a sem. ",
+      "text": "ETIAM SED VELIT A TELLUS COMMODO FRINGILLA DAPIBUS A SEM. ",
       "type": "transition"
     },
     {
-      "text": "Vivamus non imperdiet ipsum, non accumsan justo. Sed eget feugiat lectus. Aenean non egestas libero. Donec egestas urna mattis convallis maximuS.",
+      "text": "VIVAMUS NON IMPERDIET IPSUM, NON ACCUMSAN JUSTO. SED EGET FEUGIAT LECTUS. AENEAN NON EGESTAS LIBERO. DONEC EGESTAS URNA MATTIS CONVALLIS MAXIMUS.",
       "type": "shot"
     }
   ],
   "expectedOutput": [
     {
-      "y0": 0,
-      "length": 57,
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
       "height": 16,
+      "length": 57,
       "offset": 0,
       "parentIndex": 0,
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
       "type": "general",
-      "visible": true
+      "visible": true,
+      "width": 513,
+      "y0": 0
     },
     {
-      "y0": 16,
-      "length": 55,
-      "text": "Morbi molestie, enim eu porttitor accumsan, risus elit ",
       "height": 16,
+      "length": 55,
       "offset": 57,
       "parentIndex": 0,
+      "text": "Morbi molestie, enim eu porttitor accumsan, risus elit ",
       "type": "general",
-      "visible": true
+      "visible": true,
+      "width": 495,
+      "y0": 16
     },
     {
-      "y0": 32,
-      "length": 47,
-      "text": "posuere velit, vitae sodales est quam vel nisi.",
       "height": 16,
+      "length": 47,
       "offset": 112,
       "parentIndex": 0,
+      "text": "posuere velit, vitae sodales est quam vel nisi.",
       "type": "general",
-      "visible": true
+      "visible": true,
+      "width": 423,
+      "y0": 32
     },
     {
-      "y0": 80,
-      "length": 67,
-      "text": "Nulla facilisi. Lorem ipsum dolor sit amet, consectetur adipiscing ",
       "height": 18,
+      "length": 77,
       "offset": 160,
       "parentIndex": 1,
+      "text": "NULLA FACILISI. LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT. SED ",
       "type": "scene_mark_title",
-      "visible": true
+      "visible": true,
+      "width": 544,
+      "y0": 80
     },
     {
-      "y0": 98,
+      "height": 18,
       "length": 64,
-      "text": "elit. Sed nec magna vitae leo sollicitudin faucibus. Ut maximus ",
-      "height": 18,
-      "offset": 227,
+      "offset": 237,
       "parentIndex": 1,
+      "text": "NEC MAGNA VITAE LEO SOLLICITUDIN FAUCIBUS. UT MAXIMUS MAGNA NON ",
       "type": "scene_mark_title",
-      "visible": true
+      "visible": true,
+      "width": 482,
+      "y0": 98
     },
     {
-      "y0": 116,
-      "length": 67,
-      "text": "magna non interdum laoreet. Donec nisi urna, finibus a scelerisque ",
       "height": 18,
-      "offset": 291,
+      "length": 75,
+      "offset": 301,
       "parentIndex": 1,
+      "text": "INTERDUM LAOREET. DONEC NISI URNA, FINIBUS A SCELERISQUE EGET, BLANDIT SIT ",
       "type": "scene_mark_title",
-      "visible": true
+      "visible": true,
+      "width": 533,
+      "y0": 116
     },
     {
-      "y0": 134,
-      "length": 58,
-      "text": "eget, blandit sit amet leo. Nulla blandit auctor tellus a ",
       "height": 18,
-      "offset": 358,
+      "length": 53,
+      "offset": 376,
       "parentIndex": 1,
+      "text": "AMET LEO. NULLA BLANDIT AUCTOR TELLUS A CONSECTETUR. ",
       "type": "scene_mark_title",
-      "visible": true
+      "visible": true,
+      "width": 392,
+      "y0": 134
     },
     {
-      "y0": 152,
-      "length": 13,
-      "text": "consectetur. ",
       "height": 18,
-      "offset": 416,
-      "parentIndex": 1,
-      "type": "scene_mark_title",
-      "visible": true
-    },
-    {
-      "y0": 175,
-      "length": 64,
-      "text": "Quisque tempor ultricies mi in scelerisque. Nunc tristique quam ",
-      "height": 18,
+      "length": 87,
       "offset": 430,
       "parentIndex": 2,
+      "text": "Quisque tempor ultricies mi in scelerisque. Nunc tristique quam vitae est feugiat, sed ",
       "type": "scene_mark_summary",
-      "visible": true
+      "visible": true,
+      "width": 518,
+      "y0": 157
     },
     {
-      "y0": 193,
-      "length": 67,
-      "text": "vitae est feugiat, sed porta massa dapibus. Quisque auctor ut nibh ",
       "height": 18,
-      "offset": 494,
+      "length": 90,
+      "offset": 517,
       "parentIndex": 2,
+      "text": "porta massa dapibus. Quisque auctor ut nibh aliquet tincidunt. Nulla finibus odio ac erat ",
       "type": "scene_mark_summary",
-      "visible": true
+      "visible": true,
+      "width": 543,
+      "y0": 175
     },
     {
-      "y0": 211,
-      "length": 67,
-      "text": "aliquet tincidunt. Nulla finibus odio ac erat vulputate, in rutrum ",
       "height": 18,
-      "offset": 561,
+      "length": 76,
+      "offset": 607,
       "parentIndex": 2,
+      "text": "vulputate, in rutrum libero blandit. Aenean tincidunt ac mauris at bibendum.",
       "type": "scene_mark_summary",
-      "visible": true
+      "visible": true,
+      "width": 464,
+      "y0": 193
     },
     {
-      "y0": 229,
-      "length": 55,
-      "text": "libero blandit. Aenean tincidunt ac mauris at bibendum.",
       "height": 18,
-      "offset": 628,
-      "parentIndex": 2,
-      "type": "scene_mark_summary",
-      "visible": true
-    },
-    {
-      "y0": 267,
-      "length": 65,
-      "text": "Quisque nec sapien nec quam sollicitudin porttitor. Aenean vitae ",
-      "height": 18,
+      "length": 73,
       "offset": 684,
       "parentIndex": 3,
+      "text": "QUISQUE NEC SAPIEN NEC QUAM SOLLICITUDIN PORTTITOR. AENEAN VITAE PRETIUM ",
       "type": "scene_mark_title",
-      "visible": true
+      "visible": true,
+      "width": 540,
+      "y0": 231
     },
     {
-      "y0": 285,
-      "length": 69,
-      "text": "pretium lacus, non euismod nisl. Ut ut porta mauris, bibendum varius ",
       "height": 18,
-      "offset": 749,
-      "parentIndex": 3,
-      "type": "scene_mark_title",
-      "visible": true
-    },
-    {
-      "y0": 303,
-      "length": 63,
-      "text": "lacus. Maecenas ut varius nisi. Curabitur bibendum, tellus vel ",
-      "height": 18,
-      "offset": 818,
-      "parentIndex": 3,
-      "type": "scene_mark_title",
-      "visible": true
-    },
-    {
-      "y0": 321,
-      "length": 67,
-      "text": "convallis faucibus, mauris augue mollis dui, posuere congue mauris ",
-      "height": 18,
-      "offset": 881,
-      "parentIndex": 3,
-      "type": "scene_mark_title",
-      "visible": true
-    },
-    {
-      "y0": 339,
       "length": 68,
-      "text": "eros accumsan turpis. Sed vulputate dolor ac augue porta fermentum. ",
-      "height": 18,
-      "offset": 948,
+      "offset": 757,
       "parentIndex": 3,
+      "text": "LACUS, NON EUISMOD NISL. UT UT PORTA MAURIS, BIBENDUM VARIUS LACUS. ",
       "type": "scene_mark_title",
-      "visible": true
+      "visible": true,
+      "width": 490,
+      "y0": 249
     },
     {
-      "y0": 357,
-      "length": 32,
-      "text": "In sollicitudin tempor aliquet. ",
       "height": 18,
-      "offset": 1016,
-      "parentIndex": 3,
-      "type": "scene_mark_title",
-      "visible": true
-    },
-    {
-      "y0": 380,
       "length": 66,
-      "text": "Vivamus nec scelerisque ipsum, ut tempus lacus. Donec arcu nulla, ",
+      "offset": 825,
+      "parentIndex": 3,
+      "text": "MAECENAS UT VARIUS NISI. CURABITUR BIBENDUM, TELLUS VEL CONVALLIS ",
+      "type": "scene_mark_title",
+      "visible": true,
+      "width": 483,
+      "y0": 267
+    },
+    {
       "height": 18,
+      "length": 71,
+      "offset": 891,
+      "parentIndex": 3,
+      "text": "FAUCIBUS, MAURIS AUGUE MOLLIS DUI, POSUERE CONGUE MAURIS EROS ACCUMSAN ",
+      "type": "scene_mark_title",
+      "visible": true,
+      "width": 540,
+      "y0": 285
+    },
+    {
+      "height": 18,
+      "length": 70,
+      "offset": 962,
+      "parentIndex": 3,
+      "text": "TURPIS. SED VULPUTATE DOLOR AC AUGUE PORTA FERMENTUM. IN SOLLICITUDIN ",
+      "type": "scene_mark_title",
+      "visible": true,
+      "width": 516,
+      "y0": 303
+    },
+    {
+      "height": 18,
+      "length": 16,
+      "offset": 1032,
+      "parentIndex": 3,
+      "text": "TEMPOR ALIQUET. ",
+      "type": "scene_mark_title",
+      "visible": true,
+      "width": 117,
+      "y0": 321
+    },
+    {
+      "height": 18,
+      "length": 78,
       "offset": 1049,
       "parentIndex": 4,
+      "text": "Vivamus nec scelerisque ipsum, ut tempus lacus. Donec arcu nulla, sagittis ut ",
       "type": "scene_mark_summary",
-      "visible": true
+      "visible": true,
+      "width": 477,
+      "y0": 344
     },
     {
-      "y0": 398,
-      "length": 65,
-      "text": "sagittis ut pellentesque et, mattis ac risus. Donec pellentesque ",
       "height": 18,
-      "offset": 1115,
+      "length": 82,
+      "offset": 1127,
       "parentIndex": 4,
+      "text": "pellentesque et, mattis ac risus. Donec pellentesque neque nec erat maximus, eget ",
       "type": "scene_mark_summary",
-      "visible": true
+      "visible": true,
+      "width": 506,
+      "y0": 362
     },
     {
-      "y0": 416,
-      "length": 52,
-      "text": "neque nec erat maximus, eget ultrices leo malesuada.",
       "height": 18,
-      "offset": 1180,
+      "length": 23,
+      "offset": 1209,
       "parentIndex": 4,
+      "text": "ultrices leo malesuada.",
       "type": "scene_mark_summary",
-      "visible": true
+      "visible": true,
+      "width": 141,
+      "y0": 380
     },
     {
-      "y0": 454,
-      "length": 68,
-      "text": "Quisque vel efficitur urna. Suspendisse nec nisi erat. Pellentesque ",
       "height": 18,
+      "length": 72,
       "offset": 1233,
       "parentIndex": 5,
+      "text": "QUISQUE VEL EFFICITUR URNA. SUSPENDISSE NEC NISI ERAT. PELLENTESQUE SED ",
       "type": "scene_mark_title",
-      "visible": true
+      "visible": true,
+      "width": 518,
+      "y0": 418
     },
     {
-      "y0": 472,
-      "length": 63,
-      "text": "sed tempor tortor. Orci varius natoque penatibus et magnis dis ",
       "height": 18,
-      "offset": 1301,
+      "length": 70,
+      "offset": 1305,
       "parentIndex": 5,
+      "text": "TEMPOR TORTOR. ORCI VARIUS NATOQUE PENATIBUS ET MAGNIS DIS PARTURIENT ",
       "type": "scene_mark_title",
-      "visible": true
+      "visible": true,
+      "width": 522,
+      "y0": 436
     },
     {
-      "y0": 490,
-      "length": 66,
-      "text": "parturient montes, nascetur ridiculus mus. Sed urna risus, semper ",
       "height": 18,
-      "offset": 1364,
+      "length": 73,
+      "offset": 1375,
       "parentIndex": 5,
+      "text": "MONTES, NASCETUR RIDICULUS MUS. SED URNA RISUS, SEMPER QUIS BLANDIT SED, ",
       "type": "scene_mark_title",
-      "visible": true
+      "visible": true,
+      "width": 531,
+      "y0": 454
     },
     {
-      "y0": 508,
-      "length": 68,
-      "text": "quis blandit sed, finibus sit amet mi. Curabitur in mi mauris. Nunc ",
       "height": 18,
-      "offset": 1430,
+      "length": 74,
+      "offset": 1448,
       "parentIndex": 5,
+      "text": "FINIBUS SIT AMET MI. CURABITUR IN MI MAURIS. NUNC AT RUTRUM TURPIS, VITAE ",
       "type": "scene_mark_title",
-      "visible": true
+      "visible": true,
+      "width": 523,
+      "y0": 472
     },
     {
-      "y0": 526,
-      "length": 40,
-      "text": "at rutrum turpis, vitae bibendum magna. ",
       "height": 18,
-      "offset": 1498,
+      "length": 16,
+      "offset": 1522,
       "parentIndex": 5,
+      "text": "BIBENDUM MAGNA. ",
       "type": "scene_mark_title",
-      "visible": true
+      "visible": true,
+      "width": 129,
+      "y0": 490
     },
     {
-      "y0": 549,
-      "length": 67,
-      "text": "In nec libero velit. Donec quis laoreet enim, quis aliquam ligula. ",
       "height": 18,
+      "length": 95,
       "offset": 1539,
       "parentIndex": 6,
+      "text": "In nec libero velit. Donec quis laoreet enim, quis aliquam ligula. Duis sollicitudin sem vitae ",
       "type": "scene_mark_summary",
-      "visible": true
+      "visible": true,
+      "width": 543,
+      "y0": 513
     },
     {
-      "y0": 567,
-      "length": 68,
-      "text": "Duis sollicitudin sem vitae risus dapibus consectetur. Fusce auctor ",
       "height": 18,
-      "offset": 1606,
+      "length": 91,
+      "offset": 1634,
       "parentIndex": 6,
+      "text": "risus dapibus consectetur. Fusce auctor urna id pellentesque ultricies. Sed vel mi et nunc ",
       "type": "scene_mark_summary",
-      "visible": true
+      "visible": true,
+      "width": 543,
+      "y0": 531
     },
     {
-      "y0": 585,
-      "length": 59,
-      "text": "urna id pellentesque ultricies. Sed vel mi et nunc iaculis ",
       "height": 18,
-      "offset": 1674,
+      "length": 19,
+      "offset": 1725,
       "parentIndex": 6,
+      "text": "iaculis vulputate. ",
       "type": "scene_mark_summary",
-      "visible": true
+      "visible": true,
+      "width": 107,
+      "y0": 549
     },
     {
-      "y0": 603,
-      "length": 11,
-      "text": "vulputate. ",
-      "height": 18,
-      "offset": 1733,
-      "parentIndex": 6,
-      "type": "scene_mark_summary",
-      "visible": true
-    },
-    {
-      "y0": 631,
-      "length": 59,
-      "text": "Sed fermentum tellus est, non blandit dolor facilisis nec. ",
       "height": 16,
+      "length": 59,
       "offset": 1745,
       "parentIndex": 7,
+      "text": "SED FERMENTUM TELLUS EST, NON BLANDIT DOLOR FACILISIS NEC. ",
       "type": "heading",
-      "visible": true
+      "visible": true,
+      "width": 531,
+      "y0": 577
     },
     {
-      "y0": 647,
-      "length": 61,
-      "text": "Nulla ut fermentum augue. In ullamcorper pharetra metus, sed ",
       "height": 16,
+      "length": 61,
       "offset": 1804,
       "parentIndex": 7,
+      "text": "NULLA UT FERMENTUM AUGUE. IN ULLAMCORPER PHARETRA METUS, SED ",
       "type": "heading",
-      "visible": true
+      "visible": true,
+      "width": 549,
+      "y0": 593
     },
     {
-      "y0": 663,
-      "length": 59,
-      "text": "imperdiet dolor suscipit eu. Cras convallis tortor sodales ",
       "height": 16,
+      "length": 59,
       "offset": 1865,
       "parentIndex": 7,
+      "text": "IMPERDIET DOLOR SUSCIPIT EU. CRAS CONVALLIS TORTOR SODALES ",
       "type": "heading",
-      "visible": true
+      "visible": true,
+      "width": 531,
+      "y0": 609
     },
     {
-      "y0": 679,
-      "length": 43,
-      "text": "dui convallis, ac hendrerit sapien laoreet.",
       "height": 16,
+      "length": 43,
       "offset": 1924,
       "parentIndex": 7,
+      "text": "DUI CONVALLIS, AC HENDRERIT SAPIEN LAOREET.",
       "type": "heading",
-      "visible": true
+      "visible": true,
+      "width": 387,
+      "y0": 625
     },
     {
-      "y0": 711,
-      "length": 58,
-      "text": "Quisque ultrices, velit ut mattis accumsan, libero tellus ",
       "height": 16,
+      "length": 58,
       "offset": 1968,
       "parentIndex": 8,
+      "text": "Quisque ultrices, velit ut mattis accumsan, libero tellus ",
       "type": "action",
-      "visible": true
+      "visible": true,
+      "width": 58,
+      "y0": 657
     },
     {
-      "y0": 727,
-      "length": 55,
-      "text": "semper est, eu consequat quam turpis eget dui. Fusce a ",
       "height": 16,
+      "length": 55,
       "offset": 2026,
       "parentIndex": 8,
+      "text": "semper est, eu consequat quam turpis eget dui. Fusce a ",
       "type": "action",
-      "visible": true
+      "visible": true,
+      "width": 55,
+      "y0": 673
     },
     {
-      "y0": 743,
-      "length": 61,
-      "text": "egestas ipsum. In nec risus non neque egestas euismod. Fusce ",
       "height": 16,
+      "length": 61,
       "offset": 2081,
       "parentIndex": 8,
+      "text": "egestas ipsum. In nec risus non neque egestas euismod. Fusce ",
       "type": "action",
-      "visible": true
+      "visible": true,
+      "width": 61,
+      "y0": 689
     },
     {
-      "y0": 759,
-      "length": 56,
-      "text": "accumsan eget lorem nec viverra. Duis bibendum faucibus ",
       "height": 16,
+      "length": 56,
       "offset": 2142,
       "parentIndex": 8,
+      "text": "accumsan eget lorem nec viverra. Duis bibendum faucibus ",
       "type": "action",
-      "visible": true
+      "visible": true,
+      "width": 56,
+      "y0": 705
     },
     {
-      "y0": 775,
-      "length": 61,
-      "text": "volutpat. Nulla tincidunt, magna sit amet porttitor dapibus, ",
       "height": 16,
+      "length": 61,
       "offset": 2198,
       "parentIndex": 8,
+      "text": "volutpat. Nulla tincidunt, magna sit amet porttitor dapibus, ",
       "type": "action",
-      "visible": true
+      "visible": true,
+      "width": 61,
+      "y0": 721
     },
     {
-      "y0": 791,
-      "length": 56,
-      "text": "ex lorem viverra nulla, sit amet interdum elit eros sed ",
       "height": 16,
+      "length": 56,
       "offset": 2259,
       "parentIndex": 8,
+      "text": "ex lorem viverra nulla, sit amet interdum elit eros sed ",
       "type": "action",
-      "visible": true
+      "visible": true,
+      "width": 56,
+      "y0": 737
     },
     {
-      "y0": 807,
-      "length": 61,
-      "text": "ipsum. Proin placerat erat vitae nibh auctor, a luctus purus ",
       "height": 16,
+      "length": 61,
       "offset": 2315,
       "parentIndex": 8,
+      "text": "ipsum. Proin placerat erat vitae nibh auctor, a luctus purus ",
       "type": "action",
-      "visible": true
+      "visible": true,
+      "width": 61,
+      "y0": 753
     },
     {
-      "y0": 823,
-      "length": 61,
-      "text": "mattis. Proin dapibus turpis et ligula interdum scelerisque. ",
       "height": 16,
+      "length": 61,
       "offset": 2376,
       "parentIndex": 8,
+      "text": "mattis. Proin dapibus turpis et ligula interdum scelerisque. ",
       "type": "action",
-      "visible": true
+      "visible": true,
+      "width": 61,
+      "y0": 769
     },
     {
-      "y0": 839,
-      "length": 56,
-      "text": "Praesent et tempor enim. Suspendisse et purus sed dolor ",
       "height": 16,
+      "length": 56,
       "offset": 2437,
       "parentIndex": 8,
+      "text": "Praesent et tempor enim. Suspendisse et purus sed dolor ",
       "type": "action",
-      "visible": true
+      "visible": true,
+      "width": 56,
+      "y0": 785
     },
     {
-      "y0": 855,
-      "length": 56,
-      "text": "malesuada ultricies et non dolor. Phasellus a magna nec ",
       "height": 16,
+      "length": 56,
       "offset": 2493,
       "parentIndex": 8,
+      "text": "malesuada ultricies et non dolor. Phasellus a magna nec ",
       "type": "action",
-      "visible": true
+      "visible": true,
+      "width": 56,
+      "y0": 801
     },
     {
-      "y0": 871,
-      "length": 37,
-      "text": "turpis semper finibus vitae id magna.",
       "height": 16,
+      "length": 37,
       "offset": 2549,
       "parentIndex": 8,
+      "text": "turpis semper finibus vitae id magna.",
       "type": "action",
-      "visible": true
+      "visible": true,
+      "width": 37,
+      "y0": 817
     },
     {
-      "y0": 919,
-      "length": 67,
-      "text": "Donec at porta nisl. Nam id lobortis magna. In vitae tempor justo, ",
       "height": 18,
+      "length": 71,
       "offset": 2587,
       "parentIndex": 9,
+      "text": "DONEC AT PORTA NISL. NAM ID LOBORTIS MAGNA. IN VITAE TEMPOR JUSTO, NEC ",
       "type": "scene_mark_title",
-      "visible": true
+      "visible": true,
+      "width": 510,
+      "y0": 865
     },
     {
-      "y0": 937,
-      "length": 63,
-      "text": "nec suscipit sapien. Nunc ut ante ex. Proin sed purus in metus ",
       "height": 18,
-      "offset": 2654,
+      "length": 70,
+      "offset": 2658,
       "parentIndex": 9,
+      "text": "SUSCIPIT SAPIEN. NUNC UT ANTE EX. PROIN SED PURUS IN METUS VESTIBULUM ",
       "type": "scene_mark_title",
-      "visible": true
+      "visible": true,
+      "width": 508,
+      "y0": 883
     },
     {
-      "y0": 955,
-      "length": 20,
-      "text": "vestibulum finibus. ",
       "height": 18,
-      "offset": 2717,
+      "length": 9,
+      "offset": 2728,
       "parentIndex": 9,
+      "text": "FINIBUS. ",
       "type": "scene_mark_title",
-      "visible": true
+      "visible": true,
+      "width": 58,
+      "y0": 901
     },
     {
-      "y0": 978,
-      "length": 69,
-      "text": "Morbi feugiat leo quam, ac imperdiet ex sodales in. Nam finibus nunc ",
       "height": 18,
+      "length": 92,
       "offset": 2738,
       "parentIndex": 10,
+      "text": "Morbi feugiat leo quam, ac imperdiet ex sodales in. Nam finibus nunc in elit fringilla, sed ",
       "type": "scene_mark_summary",
-      "visible": true
+      "visible": true,
+      "width": 537,
+      "y0": 924
     },
     {
-      "y0": 996,
-      "length": 65,
-      "text": "in elit fringilla, sed faucibus mi egestas. Praesent scelerisque ",
       "height": 18,
-      "offset": 2807,
+      "length": 83,
+      "offset": 2830,
       "parentIndex": 10,
+      "text": "faucibus mi egestas. Praesent scelerisque lacinia fermentum. Donec sit amet semper ",
       "type": "scene_mark_summary",
-      "visible": true
+      "visible": true,
+      "width": 523,
+      "y0": 942
     },
     {
-      "y0": 1014,
-      "length": 67,
-      "text": "lacinia fermentum. Donec sit amet semper eros, a efficitur ex. Nam ",
       "height": 18,
-      "offset": 2872,
+      "length": 96,
+      "offset": 2913,
       "parentIndex": 10,
+      "text": "eros, a efficitur ex. Nam eget ligula id lectus lobortis porta ut sit amet ante. Nulla id lorem ",
       "type": "scene_mark_summary",
-      "visible": true
+      "visible": true,
+      "width": 544,
+      "y0": 960
     },
     {
-      "y0": 1032,
-      "length": 64,
-      "text": "eget ligula id lectus lobortis porta ut sit amet ante. Nulla id ",
       "height": 18,
-      "offset": 2939,
+      "length": 83,
+      "offset": 3009,
       "parentIndex": 10,
+      "text": "non erat sagittis viverra. Donec ac lorem sed neque hendrerit sagittis in a sapien.",
       "type": "scene_mark_summary",
-      "visible": true
+      "visible": true,
+      "width": 493,
+      "y0": 978
     },
     {
-      "y0": 1050,
-      "length": 68,
-      "text": "lorem non erat sagittis viverra. Donec ac lorem sed neque hendrerit ",
-      "height": 18,
-      "offset": 3003,
-      "parentIndex": 10,
-      "type": "scene_mark_summary",
-      "visible": true
-    },
-    {
-      "y0": 1068,
-      "length": 21,
-      "text": "sagittis in a sapien.",
-      "height": 18,
-      "offset": 3071,
-      "parentIndex": 10,
-      "type": "scene_mark_summary",
-      "visible": true
-    },
-    {
-      "y0": 1096,
-      "length": 58,
-      "text": "Phasellus aliquet nec justo eget porta. Sed ac purus quis ",
       "height": 16,
+      "length": 58,
       "offset": 3093,
       "parentIndex": 11,
+      "text": "PHASELLUS ALIQUET NEC JUSTO EGET PORTA. SED AC PURUS QUIS ",
       "type": "heading",
-      "visible": true
+      "visible": true,
+      "width": 522,
+      "y0": 1006
     },
     {
-      "y0": 1112,
-      "length": 61,
-      "text": "diam imperdiet condimentum. Donec euismod ultricies sem, sed ",
       "height": 16,
+      "length": 61,
       "offset": 3151,
       "parentIndex": 11,
+      "text": "DIAM IMPERDIET CONDIMENTUM. DONEC EUISMOD ULTRICIES SEM, SED ",
       "type": "heading",
-      "visible": true
+      "visible": true,
+      "width": 549,
+      "y0": 1022
     },
     {
-      "y0": 1128,
-      "length": 29,
-      "text": "consequat eros facilisis vel.",
       "height": 16,
+      "length": 29,
       "offset": 3212,
       "parentIndex": 11,
+      "text": "CONSEQUAT EROS FACILISIS VEL.",
       "type": "heading",
-      "visible": true
+      "visible": true,
+      "width": 261,
+      "y0": 1038
     },
     {
-      "y0": 1144,
-      "length": 0,
-      "text": "",
       "height": 16,
+      "length": 0,
       "offset": 3242,
       "parentIndex": 12,
+      "text": "",
       "type": "general",
-      "visible": true
+      "visible": true,
+      "width": 0,
+      "y0": 1054
     },
     {
-      "y0": 1160,
-      "length": 27,
-      "text": "(Fusce id libero bibendum, ",
       "height": 16,
+      "length": 27,
       "offset": 3243,
       "parentIndex": 13,
+      "text": "(Fusce id libero bibendum, ",
       "type": "parenthetical",
-      "visible": true
+      "visible": true,
+      "width": 243,
+      "y0": 1070
     },
     {
-      "y0": 1176,
-      "length": 26,
-      "text": "sagittis eros id, blandit ",
       "height": 16,
+      "length": 26,
       "offset": 3270,
       "parentIndex": 13,
+      "text": "sagittis eros id, blandit ",
       "type": "parenthetical",
-      "visible": true
+      "visible": true,
+      "width": 234,
+      "y0": 1086
     },
     {
-      "y0": 1192,
-      "length": 27,
-      "text": "mi. Mauris dapibus iaculis ",
       "height": 16,
+      "length": 27,
       "offset": 3296,
       "parentIndex": 13,
+      "text": "mi. Mauris dapibus iaculis ",
       "type": "parenthetical",
-      "visible": true
+      "visible": true,
+      "width": 243,
+      "y0": 1102
     },
     {
-      "y0": 1208,
-      "length": 23,
-      "text": "nisl, at blandit lacus ",
       "height": 16,
+      "length": 23,
       "offset": 3323,
       "parentIndex": 13,
+      "text": "nisl, at blandit lacus ",
       "type": "parenthetical",
-      "visible": true
+      "visible": true,
+      "width": 207,
+      "y0": 1118
     },
     {
-      "y0": 1224,
-      "length": 20,
-      "text": "tincidunt sit amet.)",
       "height": 16,
+      "length": 20,
       "offset": 3346,
       "parentIndex": 13,
+      "text": "tincidunt sit amet.)",
       "type": "parenthetical",
-      "visible": true
+      "visible": true,
+      "width": 180,
+      "y0": 1134
     },
     {
-      "y0": 1256,
-      "length": 39,
-      "text": "Nulla eget consequat turpis. Duis quis ",
       "height": 16,
+      "length": 39,
       "offset": 3367,
       "parentIndex": 14,
+      "text": "NULLA EGET CONSEQUAT TURPIS. DUIS QUIS ",
       "type": "character",
-      "visible": true
+      "visible": true,
+      "width": 351,
+      "y0": 1166
     },
     {
-      "y0": 1272,
-      "length": 14,
-      "text": "aliquet massa.",
       "height": 16,
+      "length": 14,
       "offset": 3406,
       "parentIndex": 14,
+      "text": "ALIQUET MASSA.",
       "type": "character",
-      "visible": true
+      "visible": true,
+      "width": 126,
+      "y0": 1182
     },
     {
-      "y0": 1304,
-      "length": 57,
-      "text": "Vestibulum a arcu sed augue ultrices tempor nec sit amet ",
       "height": 16,
+      "length": 57,
       "offset": 3421,
       "parentIndex": 15,
+      "text": "Vestibulum a arcu sed augue ultrices tempor nec sit amet ",
       "type": "action",
-      "visible": true
+      "visible": true,
+      "width": 57,
+      "y0": 1214
     },
     {
-      "y0": 1320,
-      "length": 6,
-      "text": "felis.",
       "height": 16,
+      "length": 6,
       "offset": 3478,
       "parentIndex": 15,
+      "text": "felis.",
       "type": "action",
-      "visible": true
+      "visible": true,
+      "width": 6,
+      "y0": 1230
     },
     {
-      "y0": 1336,
-      "length": 0,
-      "text": "",
       "height": 16,
+      "length": 0,
       "offset": 3485,
       "parentIndex": 16,
+      "text": "",
       "type": "general",
-      "visible": true
+      "visible": true,
+      "width": 0,
+      "y0": 1246
     },
     {
-      "y0": 1352,
-      "length": 35,
-      "text": "Integer libero elit, tristique nec ",
       "height": 16,
+      "length": 35,
       "offset": 3486,
       "parentIndex": 17,
+      "text": "Integer libero elit, tristique nec ",
       "type": "dialogue",
-      "visible": true
+      "visible": true,
+      "width": 315,
+      "y0": 1262
     },
     {
-      "y0": 1368,
-      "length": 30,
-      "text": "eros non, sollicitudin ornare ",
       "height": 16,
+      "length": 30,
       "offset": 3521,
       "parentIndex": 17,
+      "text": "eros non, sollicitudin ornare ",
       "type": "dialogue",
-      "visible": true
+      "visible": true,
+      "width": 270,
+      "y0": 1278
     },
     {
-      "y0": 1384,
-      "length": 33,
-      "text": "purus. Nam et hendrerit dui, vel ",
       "height": 16,
+      "length": 33,
       "offset": 3551,
       "parentIndex": 17,
+      "text": "purus. Nam et hendrerit dui, vel ",
       "type": "dialogue",
-      "visible": true
+      "visible": true,
+      "width": 297,
+      "y0": 1294
     },
     {
-      "y0": 1400,
-      "length": 12,
-      "text": "iaculis sem.",
       "height": 16,
+      "length": 12,
       "offset": 3584,
       "parentIndex": 17,
+      "text": "iaculis sem.",
       "type": "dialogue",
-      "visible": true
+      "visible": true,
+      "width": 108,
+      "y0": 1310
     },
     {
-      "y0": 1432,
-      "length": 16,
-      "text": "Etiam sed velit ",
       "height": 16,
+      "length": 16,
       "offset": 3597,
       "parentIndex": 18,
+      "text": "ETIAM SED VELIT ",
       "type": "transition",
-      "visible": true
+      "visible": true,
+      "width": 144,
+      "y0": 1342
     },
     {
-      "y0": 1448,
-      "length": 17,
-      "text": "a tellus commodo ",
       "height": 16,
+      "length": 17,
       "offset": 3613,
       "parentIndex": 18,
+      "text": "A TELLUS COMMODO ",
       "type": "transition",
-      "visible": true
+      "visible": true,
+      "width": 153,
+      "y0": 1358
     },
     {
-      "y0": 1464,
-      "length": 10,
-      "text": "fringilla ",
       "height": 16,
+      "length": 10,
       "offset": 3630,
       "parentIndex": 18,
+      "text": "FRINGILLA ",
       "type": "transition",
-      "visible": true
+      "visible": true,
+      "width": 90,
+      "y0": 1374
     },
     {
-      "y0": 1480,
-      "length": 15,
-      "text": "dapibus a sem. ",
       "height": 16,
+      "length": 15,
       "offset": 3640,
       "parentIndex": 18,
+      "text": "DAPIBUS A SEM. ",
       "type": "transition",
-      "visible": true
+      "visible": true,
+      "width": 135,
+      "y0": 1390
     },
     {
-      "y0": 1528,
-      "length": 58,
-      "text": "Vivamus non imperdiet ipsum, non accumsan justo. Sed eget ",
       "height": 16,
+      "length": 58,
       "offset": 3656,
       "parentIndex": 19,
+      "text": "VIVAMUS NON IMPERDIET IPSUM, NON ACCUMSAN JUSTO. SED EGET ",
       "type": "shot",
-      "visible": true
+      "visible": true,
+      "width": 522,
+      "y0": 1438
     },
     {
-      "y0": 1544,
-      "length": 62,
-      "text": "feugiat lectus. Aenean non egestas libero. Donec egestas urna ",
       "height": 16,
+      "length": 62,
       "offset": 3714,
       "parentIndex": 19,
+      "text": "FEUGIAT LECTUS. AENEAN NON EGESTAS LIBERO. DONEC EGESTAS URNA ",
       "type": "shot",
-      "visible": true
+      "visible": true,
+      "width": 558,
+      "y0": 1454
     },
     {
-      "y0": 1560,
-      "length": 25,
-      "text": "mattis convallis maximuS.",
       "height": 16,
+      "length": 25,
       "offset": 3776,
       "parentIndex": 19,
+      "text": "MATTIS CONVALLIS MAXIMUS.",
       "type": "shot",
-      "visible": true
+      "visible": true,
+      "width": 225,
+      "y0": 1470
     }
   ]
 }

@@ -63,7 +63,7 @@ test('wrapTextRobust()', () => {
 
     types = {
       example: {
-        width: 4,
+        columns: 4,
       },
     };
 
