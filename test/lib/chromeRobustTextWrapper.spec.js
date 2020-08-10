@@ -112,8 +112,8 @@ test('ChromeRobustTextWrapper', () => {
       richOutput: true,
     };
 
-    test('returns the expected lines', () => {
-      const expectedLines = [
+    test('returns the expected text of each line', () => {
+      const expectedValues = [
         'a ',
         'b ',
         'c',
@@ -121,37 +121,49 @@ test('ChromeRobustTextWrapper', () => {
         'd e',
       ];
       const result = subject(documentLines, types, options);
-      assert.deepEqual(result.map((entry) => entry.text), expectedLines);
+      assert.deepEqual(result.map((entry) => entry.text), expectedValues);
+    });
+
+    test('returns the expected index of each line', () => {
+      const expectedValues = [0, 1, 2, 3, 4];
+      const result = subject(documentLines, types, options);
+      assert.deepEqual(result.map((entry) => entry.index), expectedValues);
     });
 
     test('returns the expected parent index each line', () => {
-      const expectedIndexes = [0, 0, 0, 1, 2];
+      const expectedValues = [0, 0, 0, 1, 2];
       const result = subject(documentLines, types, options);
-      assert.deepEqual(result.map((entry) => entry.parentIndex), expectedIndexes);
+      assert.deepEqual(result.map((entry) => entry.parentIndex), expectedValues);
     });
 
     test('returns the expected position of each line', () => {
-      const expectedY0 = [0, 7, 12, -1, 27];
+      const expectedValues = [0, 7, 12, -1, 27];
       const result = subject(documentLines, types, options);
-      assert.deepEqual(result.map((entry) => entry.y0), expectedY0);
+      assert.deepEqual(result.map((entry) => entry.y0), expectedValues);
     });
 
     test('returns the expected height of each line', () => {
-      const expectedY0 = [5, 5, 5, 0, 8];
+      const expectedValues = [5, 5, 5, 0, 8];
       const result = subject(documentLines, types, options);
-      assert.deepEqual(result.map((entry) => entry.height), expectedY0);
+      assert.deepEqual(result.map((entry) => entry.height), expectedValues);
     });
 
     test('returns the expected marginTop of each line', () => {
-      const expectedY0 = [2, 0, 0, 0, 4];
+      const expectedValues = [2, 0, 0, 0, 4];
       const result = subject(documentLines, types, options);
-      assert.deepEqual(result.map((entry) => entry.marginTop), expectedY0);
+      assert.deepEqual(result.map((entry) => entry.marginTop), expectedValues);
     });
 
     test('returns the expected marginBottom of each line', () => {
-      const expectedY0 = [0, 0, 10, 0, 0];
+      const expectedValues = [0, 0, 10, 0, 0];
       const result = subject(documentLines, types, options);
-      assert.deepEqual(result.map((entry) => entry.marginBottom), expectedY0);
+      assert.deepEqual(result.map((entry) => entry.marginBottom), expectedValues);
+    });
+
+    test('returns the expected totalHeight of each line', () => {
+      const expectedValues = [7, 5, 15, 0, 12];
+      const result = subject(documentLines, types, options);
+      assert.deepEqual(result.map((entry) => entry.totalHeight), expectedValues);
     });
 
     test('allows to reconstruct the positions', () => {
