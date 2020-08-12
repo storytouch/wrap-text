@@ -32,25 +32,13 @@
       "lineHeight": 18,
       "marginTop": 20,
       "marginBottom": 5,
-      "font": "300 14px Roboto, sans-serif",
-      "fontConfig": {
-        "family": "Roboto",
-        "weight": "300",
-        "style": "normal",
-        "path": "/usr/src/app/test/fixtures/fonts/Roboto/Roboto-Light.ttf"
-      }
+      "font": "300 14px Roboto, sans-serif"
     },
     "scene_mark_summary": {
       "width": 547,
       "lineHeight": 18,
       "marginTop": 0,
-      "font": "300 14px Roboto, sans-serif",
-      "fontConfig": {
-        "family": "Roboto",
-        "weight": "300",
-        "style": "normal",
-        "path": "/usr/src/app/test/fixtures/fonts/Roboto/Roboto-Light.ttf"
-      }
+      "font": "300 14px Roboto, sans-serif"
     },
     "shot": {
       "columns": 61,
@@ -145,6 +133,14 @@
     {
       "text": "VIVAMUS NON IMPERDIET IPSUM, NON ACCUMSAN JUSTO. SED EGET FEUGIAT LECTUS. AENEAN NON EGESTAS LIBERO. DONEC EGESTAS URNA MATTIS CONVALLIS MAXIMUS.",
       "type": "shot"
+    }
+  ],
+  "fonts": [
+    {
+      "family": "Roboto",
+      "weight": "300",
+      "style": "normal",
+      "path": "/usr/src/app/test/fixtures/fonts/Roboto/Roboto-Light.ttf"
     }
   ],
   "expectedOutput": [

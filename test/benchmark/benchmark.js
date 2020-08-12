@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 const { wrapTextRobust } = require('../../index.js');
+const { createCanvas } = require('../utils/canvas');
 
 const textFixture = require('../fixtures/benchmark-text.json').text;
 
@@ -8,11 +9,13 @@ const NUMBER_OF_INPUT_LINES = 2000;
 const FONT_DRIVEN_TYPE = 'FONT_DRIVEN_TYPE';
 const COLUMN_DRIVEN_TYPE = 'COLUMN_DRIVEN_TYPE';
 
+const isRunningOnBrowser = typeof window !== 'undefined';
+
 const printAgent = () => {
-  if (typeof window === 'undefined') {
-    console.log('Running on Node.js');
-  } else {
+  if (isRunningOnBrowser) {
     console.log('Running on Browser');
+  } else {
+    console.log('Running on Node.js');
   }
   console.log('==================');
 };
@@ -38,10 +41,18 @@ const types = {
   },
 };
 
+const canvas = isRunningOnBrowser
+  ? document.createElement('canvas')
+  : createCanvas();
+
+const options = {
+  canvas,
+};
+
 const performBenchmarkTest = (numberOfParagraphs, type) => {
   const documentLines = generateLongText(numberOfParagraphs, type);
   console.time(type);
-  const output = wrapTextRobust(documentLines, types);
+  const output = wrapTextRobust(documentLines, types, options);
   console.log('Number of input lines: ', numberOfParagraphs);
   console.log('Number of output lines: ', output.length);
   console.timeEnd(type);
