@@ -2,6 +2,7 @@ const assert = require('assert');
 const test = require('testit');
 const ChromeRobustTextWrapper = require('../../lib/chromeRobustTextWrapper');
 const complexTextFixture = require('../fixtures/complex-text.json');
+const { createCanvas } = require('../utils/canvas');
 
 let documentLines;
 let types;
@@ -29,8 +30,12 @@ test('ChromeRobustTextWrapper', () => {
       type: 'any_type',
     }];
 
+    options = {
+      canvas: createCanvas(),
+    };
+
     test('all lines should have a maximum of the type width + 1 whitespace', () => {
-      const result = subject(documentLines, types);
+      const result = subject(documentLines, types, options);
       result.forEach((line) => assert(line.length <= 16));
     });
 
@@ -42,19 +47,22 @@ test('ChromeRobustTextWrapper', () => {
         'adipiscing ',
         'elit.',
       ];
-      const result = subject(documentLines, types);
+      const result = subject(documentLines, types, options);
       assert.deepEqual(result, expectedLines);
     });
 
     test('preserves the original text', () => {
-      const result = subject(documentLines, types);
+      const result = subject(documentLines, types, options);
       const reconstuctedText = result.join('');
       const originalText = documentLines.map((entry) => entry.text).join('\n');
       assert.deepEqual(reconstuctedText, originalText);
     });
 
     test('and the richOutput options is enabled', () => {
-      options = { richOutput: true };
+      options = {
+        richOutput: true,
+        canvas: createCanvas(),
+      };
 
       test('returns each line with its expected offset and length', () => {
         const result = subject(documentLines, types, options);
@@ -82,12 +90,6 @@ test('ChromeRobustTextWrapper', () => {
         marginBottom: 10,
         lineHeight: 5,
         font: '300 15px Roboto, sans-serif',
-        fontConfig: {
-          family: 'Roboto',
-          weight: '300',
-          style: 'normal',
-          path: '/usr/src/app/test/fixtures/fonts/Roboto/Roboto-Light.ttf',
-        },
       },
       type_2: {
         columns: 9,
@@ -108,8 +110,16 @@ test('ChromeRobustTextWrapper', () => {
       type: 'type_2',
     }];
 
+    const fonts = [{
+      family: 'Roboto',
+      weight: '300',
+      style: 'normal',
+      path: '/usr/src/app/test/fixtures/fonts/Roboto/Roboto-Light.ttf',
+    }];
+
     options = {
       richOutput: true,
+      canvas: createCanvas(fonts),
     };
 
     test('returns the expected text of each line', () => {
@@ -191,10 +201,13 @@ test('ChromeRobustTextWrapper', () => {
   });
 
   test('with a complex text', () => {
-    const { expectedOutput } = complexTextFixture;
+    const { expectedOutput, fonts } = complexTextFixture;
     types = complexTextFixture.types;
     documentLines = complexTextFixture.documentLines;
-    options = { richOutput: true };
+    options = {
+      richOutput: true,
+      canvas: createCanvas(fonts),
+    };
 
     test('produces the expected lines', () => {
       const result = subject(documentLines, types, options);

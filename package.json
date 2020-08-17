@@ -1,6 +1,6 @@
 {
   "name": "wrap-text",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "A simple tool for wrapping words to the specified column width.",
   "main": "index.js",
   "scripts": {
@@ -31,12 +31,10 @@
   "homepage": "https://github.com/storytouch/wrap-text#readme",
   "devDependencies": {
     "browserify": "^16.5.1",
+    "canvas": "^2.6.1",
     "eslint": "^7.3.1",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.21.2",
     "testit": "^3.1.0"
-  },
-  "dependencies": {
-    "canvas": "^2.6.1"
   }
 }

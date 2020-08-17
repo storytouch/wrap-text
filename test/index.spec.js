@@ -1,6 +1,7 @@
 const assert = require('assert');
 const test = require('testit');
 
+const { createCanvas } = require('./utils/canvas');
 const { wrapText, wrapTextRobust } = require('..');
 
 test('wrapText()', () => {
@@ -69,6 +70,7 @@ test('wrapTextRobust()', () => {
 
     options = {
       richOutput: true,
+      canvas: createCanvas(),
     };
 
     test('does not throw any error', () => {
@@ -77,10 +79,9 @@ test('wrapTextRobust()', () => {
     });
   });
 
-  test('with no options', () => {
-    test('does not throw any error', () => {
-      const result = wrapTextRobust(documentLines, types);
-      assert(Array.isArray(result));
+  test('with no canvas option', () => {
+    test('throws an error', () => {
+      assert.throws(() => wrapTextRobust(documentLines, types, {}));
     });
   });
 

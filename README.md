@@ -110,23 +110,22 @@ This algorithm allows multiple font characteristics, but only monospaced. Each f
 * **documentLines** The input lines, structured by its content, type, and further options, such as:
   * **text: string** The line text. It is required.
   * **type: string** The line type. This type must match with one of the types defined in the `types` parameter. All styles and properties used by the algorithm are based on the type definition. However, these properties can be overridden using specific values in each `documentLine`, as bellow. It is required.
-  * **[other options]** All options defined in `types` can be overridden in the scope of the line (except `fontConfig`). In that case, those specific options will apply only to the respective line. It is optional.
+  * **[other options]** All options defined in `types` can be overridden in the scope of the line. In that case, those specific options will apply only to the respective line. It is optional.
 * **types** A HashMap with all type definitions used by `documentLines`:
   * **[key]: string** The HashMap key is the type name. It is required.
   * **columns** Number of characters per line. This is recommended for monospace fonts, as it does not use complex calculations (drawing and measuring text on a canvas). If you intend to use non-monospaced fonts, use `width`.
-  * **width** Maximum line width in pixels. It is used especially for non-monospaced fonts. For monospace fonts, use `columns`.
+  * **width** Maximum line width in pixels. It is used especially for non-monospaced fonts and it uses a canvas instance passed by `options.canvas` to perform text dimensions calculation. For monospace fonts, use `columns`.
   * **marginTop: number** Top margin used to calculate the position of each line. The `margin-top` is used only in the first wrapped line of each input line. It is optional.
   * **marginBottom: number** Bottom margin used to calculate the position of each line. The `margin-bottom` is used only in the last wrapped line of each input line. It is optional.
   * **lineHeight: number** The height of each line of this type. It is optional.
   * **visible: number** When `visible` is `false`, lines of this type do not affect the position of other lines. It is optional.
-  * **font: string** The font to be applied to the text, using the [`CanvasRenderingContext2D.font`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/font) format. It is optional. The default value is `13px Courier, monospace`.
-  * **fontConfig: any** If you want to use external fonts, you should specify its location and properties. It is optional. These options are used in [`registerFont`](https://github.com/Automattic/node-canvas#registerfont) method. With the exception of the `path`, all other properties with properties resemble the CSS properties that are specified in `@font-face rules`. You must specify at least `family`. The`weight` and `style` are optional and default to `normal`.
-      * **path: string** The `.ttf` file path.
-      * **family: string** The font family name. E.g.: `Roboto`, `Comic Sans`.
-      * **weight: string** The font weight. E.g.: `bold`, `300`.
-      * **style: string** The font style. E.g.: `italic`.
+  * **font: string** The font to be applied to the text. It is optional and it is not applied if you are using `columns`. The default value is `13px Courier, monospace`. Fonts must be preloaded into the `canvas` instance.
 * **options**
   * **browser: string** Line-breaking algorithms may differ from browser to browser. So far, only the Google Chrome browser is supported. The default value is `chrome`.
+  * **canvas: any** A canvas instance where `width` calculations will be performed, using its 2D Context. It is optional for `columns` calculation. If you are using `width`, you must use a canvas. It depends on the environment, for instance:
+      * **Browsers** You can use `document.createElement('canvas')`.
+      * **Node.js** You can use an instance of [node-canvas](https://github.com/Automattic/node-canvas).
+      * **Workers** You can use an instance of [OffscreenCanvas](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas).
   * **richOutput: boolean** Setting this option to `false`, an array of strings will be returned. When it is `true`, an array of objects is returned such as
       > ```ts
       > [{
@@ -169,12 +168,6 @@ const types = {
     marginBottom: 10,
     lineHeight: 5,
     font: '300 15px Roboto, sans-serif',
-    fontConfig: {
-      family: 'Roboto',
-      weight: '300',
-      style: 'normal',
-      path: '/path/of/my/fonts/Roboto-Light.ttf',
-    },
   },
   type_2: {
     columns: 9,
