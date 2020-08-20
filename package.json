@@ -1,6 +1,6 @@
 {
   "name": "wrap-text",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "A simple tool for wrapping words to the specified column width.",
   "main": "index.js",
   "scripts": {
