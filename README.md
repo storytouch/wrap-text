@@ -126,6 +126,7 @@ This algorithm allows multiple font characteristics, but only monospaced. Each f
       * **Browsers** You can use `document.createElement('canvas')`.
       * **Node.js** You can use an instance of [node-canvas](https://github.com/Automattic/node-canvas).
       * **Workers** You can use an instance of [OffscreenCanvas](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas).
+  * **useExtendedMetrics: boolean** Enables the use of `actualBoundingBoxLeft` and `actualBoundingBoxRight` of `TextMetrics` object to perform a more accurate `width` estimation. It is optional and the default value is `false`.
   * **richOutput: boolean** Setting this option to `false`, an array of strings will be returned. When it is `true`, an array of objects is returned such as
       > ```ts
       > [{
