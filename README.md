@@ -9,9 +9,6 @@ Main features:
 
 This means that you can reconstruct the input text exactly at it is.
 
-#### Limitations
-- It only works for monospace fonts so far.
-
 ## Install
 
 ```
