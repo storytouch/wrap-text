@@ -117,9 +117,23 @@ test('ChromeRobustTextWrapper', () => {
       path: '/usr/src/app/test/fixtures/fonts/Roboto/Roboto-Light.ttf',
     }];
 
+    // E.g: let's mark every type transition
+    const marker = () => {
+      let lastType = null;
+      return (context, index) => {
+        const currentType = context.type;
+        const isTransition = index > 0 && currentType !== lastType;
+        lastType = currentType;
+        return {
+          transition: isTransition,
+        };
+      };
+    };
+
     options = {
       richOutput: true,
       canvas: createCanvas(fonts),
+      marker: marker(),
     };
 
     test('returns the expected text of each line', () => {
@@ -197,6 +211,12 @@ test('ChromeRobustTextWrapper', () => {
         const textSubstr = allText.substr(entry.offset, entry.length);
         assert.deepEqual(entry.text, textSubstr);
       });
+    });
+
+    test('returns the expected marker of each line', () => {
+      const expectedValues = [false, false, false, true, false];
+      const result = subject(documentLines, types, options);
+      assert.deepEqual(result.map((entry) => entry.transition), expectedValues);
     });
   });
 

@@ -127,6 +127,16 @@ This algorithm allows multiple font characteristics, but only monospaced. Each f
       * **Node.js** You can use an instance of [node-canvas](https://github.com/Automattic/node-canvas).
       * **Workers** You can use an instance of [OffscreenCanvas](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas).
   * **useExtendedMetrics: boolean** Enables the use of `actualBoundingBoxLeft` and `actualBoundingBoxRight` of `TextMetrics` object to perform a more accurate `width` estimation. It is optional and the default value is `false`.
+  * **marker: function** A custom mark that is applied to each line. This function receives the `context` and `index` as parameters and must return an object. It is optional. E.g:
+      > ```js
+      > options = {
+      >   marker: (context, index) => ({
+      >     even: i % 2 === 0,
+      >     odd: i % 2 !== 0,
+      >     jedi: (context.type === 'master' || context.type === 'padawan'),
+      >   })
+      > }
+      > ```
   * **richOutput: boolean** Setting this option to `false`, an array of strings will be returned. When it is `true`, an array of objects is returned such as
       > ```ts
       > [{
