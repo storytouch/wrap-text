@@ -297,7 +297,7 @@ test('ChromeRobustTextWrapper', () => {
     });
   });
 
-  test('when there are multiple whitespace at the middle of the line', () => {
+  test('when there are multiple whitespace in the middle of the line', () => {
     types = {
       any_type: {
         columns: 12,
