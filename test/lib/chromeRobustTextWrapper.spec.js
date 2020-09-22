@@ -270,4 +270,82 @@ test('ChromeRobustTextWrapper', () => {
       }
     });
   });
+
+  test('when there are multiple whitespace at the begining of the line', () => {
+    types = {
+      any_type: {
+        columns: 12,
+      },
+    };
+
+    documentLines = [{
+      text: '       Lorem ipsum.',
+      type: 'any_type',
+    }];
+
+    options = {
+      canvas: createCanvas(),
+    };
+
+    test('returns the expected lines', () => {
+      const expectedLines = [
+        '       Lorem ',
+        'ipsum.',
+      ];
+      const result = subject(documentLines, types, options);
+      assert.deepEqual(result, expectedLines);
+    });
+  });
+
+  test('when there are multiple whitespace at the middle of the line', () => {
+    types = {
+      any_type: {
+        columns: 12,
+      },
+    };
+
+    documentLines = [{
+      text: 'Lorem          ipsum.',
+      type: 'any_type',
+    }];
+
+    options = {
+      canvas: createCanvas(),
+    };
+
+    test('returns the expected lines', () => {
+      const expectedLines = [
+        'Lorem       ',
+        '   ipsum.',
+      ];
+      const result = subject(documentLines, types, options);
+      assert.deepEqual(result, expectedLines);
+    });
+  });
+
+  test('when there are whitespace at the end of the line', () => {
+    types = {
+      any_type: {
+        columns: 12,
+      },
+    };
+
+    documentLines = [{
+      text: 'Lorem ipsum.  ',
+      type: 'any_type',
+    }];
+
+    options = {
+      canvas: createCanvas(),
+    };
+
+    test('returns the expected lines', () => {
+      const expectedLines = [
+        'Lorem ',
+        'ipsum.  ',
+      ];
+      const result = subject(documentLines, types, options);
+      assert.deepEqual(result, expectedLines);
+    });
+  });
 });
