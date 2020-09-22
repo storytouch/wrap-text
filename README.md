@@ -102,7 +102,7 @@ const output = wrapText(input, 15, { richOutput: true });
 > wrapTextRobust(documentLines: any[], types: Array<{[string]: any}>, options?: any) => any[]
 > ```
 
-This algorithm allows multiple font characteristics, but only monospaced. Each font property, such as width, margins, and line-height, is mapped to a defined type.
+This algorithm reproduces the CSS `white-space: pre-wrap; word-break: break-word;` output and allows multiple font characteristics. Each font property, such as width, margins, and line-height, is mapped to a defined type.
 
 * **documentLines** The input lines, structured by its content, type, and further options, such as:
   * **text: string** The line text. It is required.
