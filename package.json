@@ -35,6 +35,8 @@
     "eslint": "^7.3.1",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.21.2",
+    "node-object-hash": "^2.0.0",
     "testit": "^3.1.0"
-  }
+  },
+  "dependencies": {}
 }
