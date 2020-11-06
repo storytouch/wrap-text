@@ -124,6 +124,16 @@ This algorithm reproduces the CSS `white-space: pre-wrap; word-break: break-word
       * **Node.js** You can use an instance of [node-canvas](https://github.com/Automattic/node-canvas).
       * **Workers** You can use an instance of [OffscreenCanvas](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas).
   * **useExtendedMetrics: boolean** Enables the use of `actualBoundingBoxLeft` and `actualBoundingBoxRight` of `TextMetrics` object to perform a more accurate `width` estimation. It is optional and the default value is `false`.
+  * **hasher: function** A hash function that is used to calculate the hash of each output line. This function receives `line` as parameter and must return its hash string. It is useful to compare two sets of lines and detect where they differ. It is optional. E.g:
+      > ```js
+      > const hasher = require('node-object-hash');
+      > const hashSort = hasher({ sort: true, coerce: false });
+      >
+      > options = {
+      >   hasher: (line) => hashSort.hash(line),
+      >   richOutput: true,
+      > }
+      > ```
   * **marker: function** A custom mark that is applied to each line. This function receives the `context` and `index` as parameters and must return an object. It is optional. E.g:
       > ```js
       > options = {
@@ -137,6 +147,7 @@ This algorithm reproduces the CSS `white-space: pre-wrap; word-break: break-word
   * **richOutput: boolean** Setting this option to `false`, an array of strings will be returned. When it is `true`, an array of objects is returned such as
       > ```ts
       > [{
+      >   hash: string,
       >   height: number,
       >   length: number,
       >   marginBottom: number,
@@ -151,6 +162,7 @@ This algorithm reproduces the CSS `white-space: pre-wrap; word-break: break-word
       >   y0: number,
       > }]
       > ```
+      * **hash** The line hash that is calculated if a `hasher` function is provided.
       * **height** The line height.
       * **length** Number of characters in the line.
       * **marginBottom** The line margin-bottom.

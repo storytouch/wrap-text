@@ -1,5 +1,6 @@
 const assert = require('assert');
 const test = require('testit');
+const hasher = require('node-object-hash');
 const ChromeRobustTextWrapper = require('../../lib/chromeRobustTextWrapper');
 const complexTextFixture = require('../fixtures/complex-text.json');
 const { createCanvas } = require('../utils/canvas');
@@ -78,6 +79,21 @@ test('ChromeRobustTextWrapper', () => {
         const expectedY0 = [0, 12, 17, 22, 27];
         const result = subject(documentLines, types, options);
         assert.deepEqual(result.map((entry) => entry.y0), expectedY0);
+      });
+
+      test('and a hash function is provided', () => {
+        const hashSort = hasher({ sort: true, coerce: false });
+
+        options = {
+          hasher: (line) => hashSort.hash(line),
+          richOutput: true,
+          canvas: createCanvas(),
+        };
+
+        test('returns the hash of each line', () => {
+          const result = subject(documentLines, types, options);
+          assert(result.every((entry) => entry.hash.length > 0));
+        });
       });
     });
   });
